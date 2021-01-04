@@ -17,7 +17,23 @@ int main()
     blueBox.setFillColor(sf::Color::Blue);
     blueBox.setPosition(0,50);
 
-    std::vector<sf::RectangleShape> shapes = {redBox,greenBox,blueBox};
+    sf::RectangleShape yellowBox(sf::Vector2f(20,20));
+    yellowBox.setFillColor(sf::Color::Yellow);
+    yellowBox.setPosition(0,75);
+
+    sf::RectangleShape whiteBox(sf::Vector2f(20,20));
+    whiteBox.setFillColor(sf::Color::White);
+    whiteBox.setPosition(0,100);
+
+    sf::RectangleShape purpleBox(sf::Vector2f(20,20));
+    purpleBox.setFillColor(sf::Color::Magenta);
+    purpleBox.setPosition(0,125);
+
+    sf::RectangleShape cyanBox(sf::Vector2f(20,20));
+    cyanBox.setFillColor(sf::Color::Cyan);
+    cyanBox.setPosition(0,150);
+
+    std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
 
     sf::Text text;
     text.setString("Hello World");
@@ -43,11 +59,12 @@ int main()
 
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        for(auto x: shapes)
+                        for(auto x: colors)
                         {
                             auto globalBounds = x.getGlobalBounds();
                             if(globalBounds.contains(mousePositionX,mousePositionY))
                             {
+                                //Later on this will set the color of the square and circle that we can place.
                                 text.setFillColor(x.getFillColor());
                             }
                         }
@@ -55,9 +72,9 @@ int main()
                 }
         }
         window.clear();
-        window.draw(redBox);
-        window.draw(greenBox);
-        window.draw(blueBox);
+        for(auto x : colors){
+            window.draw(x);
+        }
         window.draw(text);
         window.display();
     }
