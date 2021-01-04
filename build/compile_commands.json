@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/twan/cpse2/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/twan/cpse2/SFML_INCLUDE_DIR -isystem /home/twan/SFML-2.5.1-Compiled/include  -g   -std=gnu++14 -o CMakeFiles/SFMLApp.dir/main.cpp.o -c /home/twan/cpse2/main.cpp",
+  "file": "/home/twan/cpse2/main.cpp"
+}
+]

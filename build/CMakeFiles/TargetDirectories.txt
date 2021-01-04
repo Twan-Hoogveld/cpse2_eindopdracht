@@ -1,0 +1,5 @@
+/home/twan/cpse2/build/CMakeFiles/package_source.dir
+/home/twan/cpse2/build/CMakeFiles/rebuild_cache.dir
+/home/twan/cpse2/build/CMakeFiles/package.dir
+/home/twan/cpse2/build/CMakeFiles/edit_cache.dir
+/home/twan/cpse2/build/CMakeFiles/SFMLApp.dir
