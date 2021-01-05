@@ -78,11 +78,14 @@ CMakeFiles/SFMLApp.dir/main.cpp.o: /home/twan/SFML-2.5.1-Compiled/include/SFML/W
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Action.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Collection.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Factory.hpp
+CMakeFiles/SFMLApp.dir/main.cpp.o: ../NotMoveableCollection.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/Circle.hpp
+CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/Dummy.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/MoveableObject.hpp
+CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/NotDummy.hpp
+CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/NotMoveableObject.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/Rectangle.hpp
-CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/dummy.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Storage.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../main.cpp
 

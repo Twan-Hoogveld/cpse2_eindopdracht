@@ -36,13 +36,6 @@ class CollectionMoveables {
 			object->draw(window);
 		}
 	}
-
-	void writeObjects(ostream& output){
-		for(auto object : storage){
-			object->writeToFile(output);
-			output << "\n";
-		}
-	}
 };
 
 #endif //COLLECTION_HPP

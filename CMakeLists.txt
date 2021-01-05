@@ -18,8 +18,20 @@ if(SFML_FOUND)
     message(STATUS "SFML_VERSION: ${SFML_VERSION}")
 endif()
 
-add_executable(SFMLApp main.cpp Action.hpp Collection.hpp Factory.hpp
-                Shapes.hpp Storage.hpp Shapes/Circle.hpp 
-                Shapes/Rectangle.hpp Shapes/MoveableObject.hpp Shapes/dummy.hpp)
+add_executable(SFMLApp 
+main.cpp 
+Action.hpp 
+Collection.hpp 
+Factory.hpp         
+Shapes.hpp 
+Storage.hpp 
+Shapes/Circle.hpp
+Shapes/Rectangle.hpp 
+Shapes/MoveableObject.hpp 
+Shapes/Dummy.hpp 
+Shapes/NotDummy.hpp
+Shapes/NotMoveableObject.hpp 
+NotMoveableCollection.hpp
+)
 
 target_link_libraries (SFMLApp sfml-graphics sfml-window sfml-system)
