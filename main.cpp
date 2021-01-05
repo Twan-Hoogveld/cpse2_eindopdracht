@@ -85,8 +85,7 @@ int main()
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         //Copy the object into the moveable collection. so we can drag it.
-                        collection.add(make_shared<Circle>(sf::Vector2f{25,25}, 20, defaultColor)); //Selector for Circle
-
+                        collection.add(make_shared<Circle>(sf::Vector2f{50,50}, 20, defaultColor)); //Selector for Circle
                     }
 
                     for(auto x: colors)
