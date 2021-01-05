@@ -88,6 +88,11 @@ int main()
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                     }
 
+                    for (auto& Action : actions) 
+                    {
+                        Action();
+                    }
+
                     //     for(auto x: colors)
                     //     {
                     //         auto globalBounds = x.getGlobalBounds();
