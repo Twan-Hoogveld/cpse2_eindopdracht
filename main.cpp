@@ -63,10 +63,10 @@ int main()
     text.setPosition(50,10);
 
     
-	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); }),
-                      Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); }),
-                      Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); }),
-                      Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); })};
+	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
+                      Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
+                      Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); std::cout << "Move Up \n"; }),
+                      Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); std::cout << "Move Down \n"; })};
 
 
     while (window.isOpen())
