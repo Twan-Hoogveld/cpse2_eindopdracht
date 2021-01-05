@@ -1,10 +1,31 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include "Collection.hpp"
+#include "Factory.hpp"
+#include "Action.hpp"
+#include "Shapes/Circle.hpp"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(400, 400), "BloxBox");
+    CollectionMoveables<10> collection = {};
+    shared_ptr<MoveableObject> active_object;
+
+    auto defaultColor = sf::Color::Red;
+
+    sf::RectangleShape placeBox(sf::Vector2f(20,20));
+    placeBox.setFillColor(defaultColor);
+    placeBox.setPosition(25,0);
+
+    //sf::CircleShape placeCircle(10);
+    //placeCircle.setFillColor(defaultColor);
+    //placeCircle.setPosition(25,25);
+
+    sf::Vector2f a = {25,25};
+    collection.add(make_shared<Circle>(a, 10, defaultColor));
+
+    // std::vector<sf::Drawable> &placeObjects = {placeCircle,placeBox};
 
     sf::RectangleShape redBox(sf::Vector2f(20,20));
     redBox.setFillColor(sf::Color::Red);
@@ -44,6 +65,11 @@ int main()
     text.setFillColor(sf::Color::White);
     text.setPosition(50,10);
 
+	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); }),
+                      Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); }),
+                      Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); }),
+                      Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); })};
+
 
     while (window.isOpen())
     {
@@ -59,26 +85,33 @@ int main()
 
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        for(auto x: colors)
-                        {
-                            auto globalBounds = x.getGlobalBounds();
-                            if(globalBounds.contains(mousePositionX,mousePositionY))
-                            {
-                                //Later on this will set the color of the square and circle that we can place.
-                                text.setFillColor(x.getFillColor());
-                            }
-                        }
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
                     }
+
+                    //     for(auto x: colors)
+                    //     {
+                    //         auto globalBounds = x.getGlobalBounds();
+                    //         if(globalBounds.contains(mousePositionX,mousePositionY))
+                    //         {
+                    //             //Later on this will set the color of the square and circle that we can place.
+                    //             text.setFillColor(x.getFillColor());
+                    //         }
+                    //     }
+                    // }
                 }
         }
         window.clear();
+
         for(auto x : colors){
             window.draw(x);
         }
+
+        collection.drawObjects(window);
+        window.draw(placeBox);
         window.draw(text);
         window.display();
-    }
 
+    }
     return 0;
 }
 
