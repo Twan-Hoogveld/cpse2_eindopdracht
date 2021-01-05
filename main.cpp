@@ -98,11 +98,10 @@ int main()
                             circleBox.setFillColor(x.getFillColor());
                         }
                     }
-
-                    for (auto& Action : actions) 
-                    {
-                        Action();
-                    }
+            }
+            for (auto& Action : actions) 
+            {
+                Action();
             }
         }
         window.clear();
