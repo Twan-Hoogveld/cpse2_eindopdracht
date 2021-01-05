@@ -84,6 +84,7 @@ int main()
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        std::cout << active_object << std::endl;
                         std::cout << "Active  Object is selected" << std::endl;
                         collection.add(make_shared<Circle>(sf::Vector2f{50,50}, 20, defaultColor)); //Selector for Circle
                     }
