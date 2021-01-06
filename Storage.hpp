@@ -17,6 +17,12 @@ class Storage {
     }
   }
 
+  void remove(const T &to_remove){
+    for(auto x : store){
+      std::cout << x << std::endl;
+    }
+  }
+
   T *begin() { return store; }
   T *end() { return store + count; }
 

@@ -21,6 +21,10 @@ class CollectionMoveables {
 		storage.add(to_add);
 	}
 
+	void remove(shared_ptr<MoveableObject> to_remove){
+		storage.remove(to_remove);
+	}
+
 	shared_ptr<MoveableObject> getObject(const Vector2i& mouse_pos){
 		for(auto object : storage){
 			FloatRect boundary = object->getBound();

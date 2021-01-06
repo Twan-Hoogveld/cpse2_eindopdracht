@@ -130,6 +130,7 @@ int main()
                         else if(sprite.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "move tool is selected" << std::endl;
+                            collection.remove(active_object);
                         }
 
                         else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon.
