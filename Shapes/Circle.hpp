@@ -22,22 +22,32 @@ class Circle : public MoveableObject {
 	void move(const Vector2f& velo) override
   {
     pos += velo;
-  };
+  }
 
   void jump(const Vector2f& new_pos) override
   {
     pos = new_pos;
-  };
+  }
 
   FloatRect getBound() override
   {
     return circle.getGlobalBounds();
-  };
+  }
+
   void draw(RenderWindow& window) override
   {
     circle.setPosition(pos);
     window.draw(circle); 
-  };
+  }
+
+  sf::Color getOutlineColor(){
+    return circle.getOutlineColor();
+  }
+
+  sf::Color getFillColor(){
+    return circle.getFillColor();
+  }
+
 };
 
 #endif  // CIRCLE_HPP

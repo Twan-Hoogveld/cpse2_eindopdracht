@@ -52,8 +52,16 @@ int main()
     sf::RectangleShape cyanBox(sf::Vector2f(20,20));
     cyanBox.setFillColor(sf::Color::Cyan);
     cyanBox.setPosition(0,150);
-    //---------------------------------------------------------------------------
+
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
+    //---------------------------------------------------------------------------
+    sf::Image Image;
+    if (!Image.loadFromFile("move.png")){
+        std::cout << "ERROR" << std::endl;
+    } else{
+        std::cout << "LOADED" << std::endl;
+    }
+// -------------------------------------------------------------------------------
 
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
                       Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
@@ -66,17 +74,18 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed){
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
             }
 
-            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left)){ //draggin'
-                std::cout << "dRag and drop" << std::endl;
+            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
                 auto mPos = sf::Mouse::getPosition(window);
                 active_object->jump(sf::Vector2f(mPos.x,mPos.y));
             }
 
-            if (event.type == sf::Event::MouseButtonPressed) //clicking
+            if (event.type == sf::Event::MouseButtonPressed)
             {
                 auto position = sf::Mouse::getPosition(window);
                 if (event.mouseButton.button == sf::Mouse::Left)
@@ -89,7 +98,6 @@ int main()
 
                         if( position.x >= minVal.x && position.x <= maxVal.x && position.y >= minVal.y && position.y <= maxVal.y)
                         {
-                            std::cout << "user clicked on a color." << std::endl;
                             for(auto x: colors)
                             {
                                 auto globalBounds = x.getGlobalBounds();
@@ -101,48 +109,55 @@ int main()
                             }
                         } 
 
+                        //Is the Circle Clicked?
                         else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
                             collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
                             
                             //Select the newly created object as active.
                             sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
-
-                            // while(mouseIsClickedOnce){ //Zolang de gebruiker niet klikt, blijft de circel meebewegen met de muis
-                            //     auto mPos = sf::Mouse::getPosition(window);
-                            //     active_object->jump(sf::Vector2f(mPos.x,mPos.y));
-                            //     usleep(1000);
                             }
 
-                        else if(squareBox.getGlobalBounds().contains(position.x,position.y)){
+                        //Is the Rectangle clicked?
+                        else if(squareBox.getGlobalBounds().contains(position.x,position.y))
+                        {
                             collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
-                            std::cout << "Clicked on the rectangle." << std::endl;
-                        }
 
-                        //Did the user click in the middle of the screen and select an object that is moveable?
-                        else{
-                            std::cout << "Clicked somewhere on the field" << std::endl;
+                            //Select the newly created object as active.
+                            sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        }
+                        else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon.
+                        {
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
                     }
             }
+
+            //Do all the actions.
             for (auto& Action : actions) 
             {
                 Action();
             }
         }
+
+        //Clear the window of the old.
         window.clear();
+
+        //Draw the color tiles.
         for(auto x : colors){
             window.draw(x);
         }
+
+        //Draw the selector boxes
         window.draw(squareBox);
         window.draw(circleBox);
-        collection.drawObjects(window);
-        window.display();
 
+        //Draw all the items that were created during this run.
+        collection.drawObjects(window);
+
+        //Display it all.
+        window.display();
     }
     return 0;
 }
-
-//for use in wsl use this before running:
-//export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0

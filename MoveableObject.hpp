@@ -20,7 +20,7 @@ class MoveableObject {
 
   virtual FloatRect getBound() = 0;
   virtual void draw(RenderWindow& window) = 0;
-
+  virtual sf::Color getFillColor() = 0;
   virtual void move(const Vector2f& velo)  = 0;
   virtual void jump(const Vector2f& new_pos) = 0;
 
