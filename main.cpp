@@ -95,8 +95,10 @@ int main()
                         } 
 
                         else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
-                            while(event.mouseButton.button == sf::Mouse::Left){
-                                std::cout << "Holding the mouse button" << std::endl;
+                            collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
+                            while(event.mouseButton.button == sf::Mouse::Left) //While holding down the mouse, we can move the newly created object.
+                            { 
+                            
                             }
                             std::cout << "Clicked on the circle." << std::endl;
                         }
