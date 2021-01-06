@@ -53,16 +53,6 @@ int main()
     //---------------------------------------------------------------------------
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
 
-    // sf::Text text;
-    // text.setString("Hello World");
-    // sf::Font font;
-    // font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
-    // text.setFont(font);
-    // text.setCharacterSize(18);
-    // text.setFillColor(sf::Color::White);
-    // text.setPosition(50,10);
-
-    
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
                       Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
                       Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); std::cout << "Move Up \n"; }),
@@ -84,9 +74,7 @@ int main()
                 auto position = sf::Mouse::getPosition(window);
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        //Is clicked somewhere on the left of the screen, the color selector for example, we dont make new object.
-                        //Check the X and Y position of the mouse to do so.
-                        //sets the colors of the 2 fields.
+
                         sf::Vector2f minVal = {0,0};
                         sf::Vector2f maxVal = {20,170};
                         sf::Vector2f minValSelector = {25,0};
@@ -106,32 +94,20 @@ int main()
                             }
                         } 
 
-                        //else if
-                        //the user clicked on the circle or square, to make a new object.
-                        //circle should be stuck to the mouse until the user clicks again
-                        //this will drop the circle on that position.
-                        else if(position.x >= minValSelector.x && position.x <= maxValSelector.x && position.y >= minValSelector.y && position.y <= maxValSelector.y){
-                            std::cout << "Clicked on either the circle or the square." << std::endl;
+                        else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
+                            std::cout << "Clicked on the circle." << std::endl;
+                        }
+
+                        else if(squareBox.getGlobalBounds().contains(position.x,position.y)){
+                            std::cout << "Clicked on the rectangle." << std::endl;
                         }
 
                         //Did the user click in the middle of the screen and select an object that is moveable?
                         else{
                             std::cout << "Clicked somewhere on the field" << std::endl;
-                            std::cout << "coord :" << position.x << " " << position.y << std::endl;
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
-
-
-                        // std::cout << "Memory Adress of active_object: " << active_object << std::endl;
-                        // std::cout << "Height of the Object : " << active_object->getBound().height << std::endl;
-                        // std::cout << "top of the Object : " << active_object->getBound().top << std::endl;
-                        // std::cout << "left of the Object : " << active_object->getBound().left << std::endl;
-                        // std::cout << "widht of the Object : " << active_object->getBound().width << std::endl;
-
                     }
-
-
-
             }
             for (auto& Action : actions) 
             {
@@ -139,14 +115,12 @@ int main()
             }
         }
         window.clear();
-
         for(auto x : colors){
             window.draw(x);
         }
         window.draw(squareBox);
         window.draw(circleBox);
         collection.drawObjects(window);
-        // window.draw(text);
         window.display();
 
     }
