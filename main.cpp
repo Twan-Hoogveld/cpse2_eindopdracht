@@ -85,7 +85,11 @@ int main()
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         std::cout << "Memory Adress of active_object: " << active_object << std::endl;
-                        std::cout << "Location of the Object : " << active_object->getBound().height;
+                        std::cout << "Height of the Object : " << active_object->getBound().height << std::endl;
+                        std::cout << "top of the Object : " << active_object->getBound().top << std::endl;
+                        std::cout << "left of the Object : " << active_object->getBound().left << std::endl;
+                        std::cout << "widht of the Object : " << active_object->getBound().width << std::endl;
+
                     }
 
                     for(auto x: colors)
