@@ -67,7 +67,7 @@ int main()
     sf::Image img2;
     img2.loadFromFile("..//trash.jpg");
     sf::Texture texture2;
-    texture.loadFromImage(img2);
+    texture2.loadFromImage(img2);
     sf::Sprite sprite2(texture2);
     sprite2.setPosition(25,175);
     sprite2.scale(sf::Vector2f(0.1,0.1));
