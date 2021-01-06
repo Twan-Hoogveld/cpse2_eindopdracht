@@ -96,7 +96,7 @@ int main()
 
                         else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
                             collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
-                            sf::Mouse::setPosition(sf::Vector2i(60,35));
+                            sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                             while(!sf::Mouse::isButtonPressed(sf::Mouse::Left)){ //Zolang de gebruiker niet klikt, blijft de circel meebewegen met de muis
                                 auto mPos = sf::Mouse::getPosition();
