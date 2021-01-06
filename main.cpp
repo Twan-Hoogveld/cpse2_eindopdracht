@@ -55,12 +55,13 @@ int main()
 
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     //---------------------------------------------------------------------------
-    sf::Image Image;
-    if (!Image.loadFromFile("move.png")){
+    sf::Texture texture;
+    texture.setRepeated(false);
+    if (!texture.loadFromFile("move.png")){
         std::cout << "ERROR" << std::endl;
-    } else{
-        std::cout << "LOADED" << std::endl;
-    }
+    } 
+    sf::Sprite sprite(texture);
+    sprite.setPosition(0,175);
 // -------------------------------------------------------------------------------
 
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
@@ -155,6 +156,9 @@ int main()
 
         //Draw all the items that were created during this run.
         collection.drawObjects(window);
+
+        //Draw all the sprites
+        window.draw(sprite);
 
         //Display it all.
         window.display();
