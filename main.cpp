@@ -70,9 +70,12 @@ int main()
                 window.close();
             }
 
-            if (event.type == sf::Event::MouseButtonPressed)
+            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left)){ //draggin'
+                std::cout << "dRag and drop" << std::endl;
+            }
+
+            if (event.type == sf::Event::MouseButtonPressed) //clicking
             {
-                bool mouseIsClickedOnce = true;
                 auto position = sf::Mouse::getPosition(window);
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
@@ -103,12 +106,11 @@ int main()
                             sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
 
-                            while(mouseIsClickedOnce){ //Zolang de gebruiker niet klikt, blijft de circel meebewegen met de muis
-                                auto mPos = sf::Mouse::getPosition(window);
-                                active_object->jump(sf::Vector2f(mPos.x,mPos.y));
-                                usleep(1000);
+                            // while(mouseIsClickedOnce){ //Zolang de gebruiker niet klikt, blijft de circel meebewegen met de muis
+                            //     auto mPos = sf::Mouse::getPosition(window);
+                            //     active_object->jump(sf::Vector2f(mPos.x,mPos.y));
+                            //     usleep(1000);
                             }
-                        }
 
                         else if(squareBox.getGlobalBounds().contains(position.x,position.y)){
                             collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
