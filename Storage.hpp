@@ -19,9 +19,9 @@ class Storage {
 
   void remove(const T &to_remove){
     std::cout << "Will Remove " << to_remove << std::endl;
-    for(auto x : store){
-      if(x == to_remove){
-        std::cout << x << std::endl;
+    for(unsigned int i = 0; i < count; i++){
+      if(store[i] == to_remove){
+        store[i] == 0;
       }
     }
   }
