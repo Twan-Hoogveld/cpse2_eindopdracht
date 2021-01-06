@@ -95,6 +95,9 @@ int main()
                         } 
 
                         else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
+                            while(event.mouseButton.button == sf::Mouse::Left){
+                                std::cout << "Holding the mouse button" << std::endl;
+                            }
                             std::cout << "Clicked on the circle." << std::endl;
                         }
 
