@@ -89,21 +89,35 @@ int main()
                         //sets the colors of the 2 fields.
                         sf::Vector2f minVal = {0,0};
                         sf::Vector2f maxVal = {20,170};
+                        sf::Vector2f minValSelector = {25,0};
+                        sf::Vector2f maxValSelector = {25,50};
 
                         if( position.x >= minVal.x && position.x <= maxVal.x && position.y >= minVal.y && position.y <= maxVal.y)
                         {
-                            std::cout << "Clicked on a color." << std::endl;
+                            std::cout << "user clicked on a color." << std::endl;
+                            for(auto x: colors)
+                            {
+                                auto globalBounds = x.getGlobalBounds();
+                                if(globalBounds.contains(position.x,position.y))
+                                {
+                                    squareBox.setFillColor(x.getFillColor());
+                                    circleBox.setFillColor(x.getFillColor());
+                                }
+                            }
                         } 
 
                         //else if
                         //the user clicked on the circle or square, to make a new object.
                         //circle should be stuck to the mouse until the user clicks again
                         //this will drop the circle on that position.
+                        else if(position.x >= minValSelector.x && position.x <= maxValSelector.x && position.y >= minValSelector.y && position.y <= maxValSelector.y){
+                            std::cout << "Clicked on either the circle or the square." << std::endl;
+                        }
 
-                        //Else:
                         //Did the user click in the middle of the screen and select an object that is moveable?
                         else{
-                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                            std::cout << "Clicked somewhere on the field" << std::endl;
+                            active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
 
 
@@ -115,15 +129,7 @@ int main()
 
                     }
 
-                    for(auto x: colors)
-                    {
-                        auto globalBounds = x.getGlobalBounds();
-                        if(globalBounds.contains(position.x,position.y))
-                        {
-                            squareBox.setFillColor(x.getFillColor());
-                            circleBox.setFillColor(x.getFillColor());
-                        }
-                    }
+
 
             }
             for (auto& Action : actions) 
