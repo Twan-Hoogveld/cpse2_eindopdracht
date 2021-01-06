@@ -94,8 +94,6 @@ int main()
 
                         sf::Vector2f minVal = {0,0};
                         sf::Vector2f maxVal = {20,170};
-                        sf::Vector2f minValSelector = {25,0};
-                        sf::Vector2f maxValSelector = {45,50};
 
                         if( position.x >= minVal.x && position.x <= maxVal.x && position.y >= minVal.y && position.y <= maxVal.y)
                         {
@@ -128,6 +126,12 @@ int main()
                             sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
+
+                        else if(sprite.getGlobalBounds().contains(position.x,position.y))
+                        {
+                            std::cout << "move tool is selected" << std::endl;
+                        }
+
                         else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon.
                         {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
