@@ -70,7 +70,7 @@ int main()
     texture.loadFromImage(img2);
     sf::Sprite sprite2(texture2);
     sprite2.setPosition(0,200);
-    sprite.scale(sf::Vector2f(0.1,0.1));
+    sprite2.scale(sf::Vector2f(0.1,0.1));
     // --------------------------------------------------------------------------------------
 
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
@@ -172,6 +172,7 @@ int main()
 
         //Draw all the sprites 
         window.draw(sprite);
+        window.draw(sprite2);
 
         //Display it all.
         window.display();
