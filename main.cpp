@@ -54,7 +54,7 @@ int main()
     cyanBox.setPosition(0,150);
 
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
-    //---------------------------------------------------------------------------
+    //----------------------MOVE TOOL---------------------------------------------
     sf::Image img;
     img.loadFromFile("..//move.png"); //Double for linux
     sf::Texture texture;
@@ -62,7 +62,16 @@ int main()
     sf::Sprite sprite(texture);
     sprite.setPosition(0,175);
     sprite.scale(sf::Vector2f(0.1,0.1));
-// -------------------------------------------------------------------------------
+
+    //----------------------------DELETE TOOL------------------------------------------------
+    sf::Image img2;
+    img2.loadFromFile("..//trash.png");
+    sf::Texture texture2;
+    texture.loadFromImage(img2);
+    sf::Sprite sprite2(texture2);
+    sprite2.setPosition(0,200);
+    sprite.scale(sf::Vector2f(0.1,0.1));
+    // --------------------------------------------------------------------------------------
 
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
                       Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
@@ -130,7 +139,6 @@ int main()
                         else if(sprite.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "move tool is selected" << std::endl;
-                            collection.remove(active_object);
                         }
 
                         else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon.
