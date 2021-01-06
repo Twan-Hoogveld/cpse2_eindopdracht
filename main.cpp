@@ -80,15 +80,38 @@ int main()
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
+                bool mouseIsClickedOnce = true;
                 auto position = sf::Mouse::getPosition(window);
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
+                        //Is clicked somewhere on the left of the screen, the color selector for example, we dont make new object.
+                        //Check the X and Y position of the mouse to do so.
+                        //sets the colors of the 2 fields.
+                        sf::Vector2f minVal = {0,0};
+                        sf::Vector2f maxVal = {20,170};
+
+                        if( position.x >= minVal.x && position.x <= maxVal.x && position.y >= minVal.y && position.y <= maxVal.y)
+                        {
+                            std::cout << "Clicked on a color." << std::endl;
+                        } 
+
+                        //else if
+                        //the user clicked on the circle or square, to make a new object.
+                        //circle should be stuck to the mouse until the user clicks again
+                        //this will drop the circle on that position.
+
+                        //Else:
+                        //Did the user click in the middle of the screen and select an object that is moveable?
+                        else{
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
-                        std::cout << "Memory Adress of active_object: " << active_object << std::endl;
-                        std::cout << "Height of the Object : " << active_object->getBound().height << std::endl;
-                        std::cout << "top of the Object : " << active_object->getBound().top << std::endl;
-                        std::cout << "left of the Object : " << active_object->getBound().left << std::endl;
-                        std::cout << "widht of the Object : " << active_object->getBound().width << std::endl;
+                        }
+
+
+                        // std::cout << "Memory Adress of active_object: " << active_object << std::endl;
+                        // std::cout << "Height of the Object : " << active_object->getBound().height << std::endl;
+                        // std::cout << "top of the Object : " << active_object->getBound().top << std::endl;
+                        // std::cout << "left of the Object : " << active_object->getBound().left << std::endl;
+                        // std::cout << "widht of the Object : " << active_object->getBound().width << std::endl;
 
                     }
 
@@ -101,6 +124,7 @@ int main()
                             circleBox.setFillColor(x.getFillColor());
                         }
                     }
+
             }
             for (auto& Action : actions) 
             {
