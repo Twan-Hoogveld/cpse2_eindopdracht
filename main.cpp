@@ -53,14 +53,14 @@ int main()
     //---------------------------------------------------------------------------
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
 
-    sf::Text text;
-    text.setString("Hello World");
-    sf::Font font;
-    font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
-    text.setFont(font);
-    text.setCharacterSize(18);
-    text.setFillColor(sf::Color::White);
-    text.setPosition(50,10);
+    // sf::Text text;
+    // text.setString("Hello World");
+    // sf::Font font;
+    // font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+    // text.setFont(font);
+    // text.setCharacterSize(18);
+    // text.setFillColor(sf::Color::White);
+    // text.setPosition(50,10);
 
     
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
@@ -117,6 +117,7 @@ int main()
                         //Did the user click in the middle of the screen and select an object that is moveable?
                         else{
                             std::cout << "Clicked somewhere on the field" << std::endl;
+                            std::cout << "coord :" << position.x << " " << position.y << std::endl;
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
 
@@ -145,7 +146,7 @@ int main()
         window.draw(squareBox);
         window.draw(circleBox);
         collection.drawObjects(window);
-        window.draw(text);
+        // window.draw(text);
         window.display();
 
     }
