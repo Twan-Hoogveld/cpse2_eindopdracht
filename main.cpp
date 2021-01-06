@@ -61,6 +61,7 @@ int main()
     texture.loadFromImage(img);
     sf::Sprite sprite(texture);
     sprite.setPosition(0,175);
+    sprite.scale(sf::Vector2f(0.1,0.1));
 // -------------------------------------------------------------------------------
 
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
