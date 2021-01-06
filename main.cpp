@@ -57,9 +57,7 @@ int main()
     //---------------------------------------------------------------------------
     sf::Texture texture;
     texture.setRepeated(false);
-    if (!texture.loadFromFile("move.png")){
-        std::cout << "ERROR" << std::endl;
-    } 
+    texture.loadFromFile("move.png");
     sf::Sprite sprite(texture);
     sprite.setPosition(0,175);
 // -------------------------------------------------------------------------------
