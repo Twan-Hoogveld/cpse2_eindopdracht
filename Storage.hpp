@@ -24,6 +24,9 @@ class Storage {
         store[i] == 0;
       }
     }
+
+    std::cout << "new store =" << std::endl;
+    for(auto x : store){std::cout << x << std::endl;}
   }
 
   T *begin() { return store; }
