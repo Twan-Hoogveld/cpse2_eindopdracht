@@ -17,9 +17,17 @@ class Storage {
     }
   }
 
-  void remove(const T &to_remove){
+  void remove(const T &to_remove)
+  {
     std::cout << "Will Remove " << to_remove << std::endl;
+    for (unsigned i = 0; i < count; i++)
+    {
+      if(store[i] == to_remove)
+      {
+        store[i].reset();
+      }
     }
+  }
 
   T *begin() { return store; }
   T *end() { return store + count; }
