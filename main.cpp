@@ -96,14 +96,16 @@ int main()
 
                         else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
                             collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
-                            // while(event.mouseButton.button == sf::Mouse::Left) //While holding down the mouse, we can move the newly created object.
-                            // { 
-                            
-                            // }
-                            std::cout << "Clicked on the circle." << std::endl;
+                            sf::Mouse::setPosition(sf::Vector2i(60,35));
+                            active_object = collection.getObject(sf::Mouse::getPosition(window));
+                            while(!sf::Mouse::isButtonPressed(sf::Mouse::Left)){ //Zolang de gebruiker niet klikt, blijft de circel meebewegen met de muis
+                                auto mPos = sf::Mouse::getPosition();
+                                active_object->jump(sf::Vector2f(mPos.x,mPos.y));
+                            }
                         }
 
                         else if(squareBox.getGlobalBounds().contains(position.x,position.y)){
+                            collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
                             std::cout << "Clicked on the rectangle." << std::endl;
                         }
 
