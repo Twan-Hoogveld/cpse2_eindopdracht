@@ -71,17 +71,20 @@ int main()
     sf::Sprite sprite2(texture2);
     sprite2.setPosition(25,175);
     sprite2.scale(sf::Vector2f(0.1,0.1));
-    // --------------------------------------------------------------------------------------
 
+    // ----------------------------------ACTIONS-----------------------------------------------
 	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
                       Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
                       Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); std::cout << "Move Up \n"; }),
                       Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); std::cout << "Move Down \n"; })};
 
-
+    //-----------------------------------------------------------------------------------------
     while (window.isOpen())
     {
         sf::Event event;
+        bool moveChosen = false;
+        bool deleteChosen = false;
+
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -136,9 +139,20 @@ int main()
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
 
+                        //Is the move tool selected?
                         else if(sprite.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "move tool is selected" << std::endl;
+                            if (deleteChosen == true){deleteChosen == false;}
+                            moveChosen = true;
+                        }
+
+                        //Is the delete tool selected?
+                        else if(sprite2.getGlobalBounds().contains(position.x,position.y))
+                        {
+                            std::cout << "delete tool is selected" << std::endl;
+                            if (moveChosen == true){moveChosen == false;}
+                            deleteChosen = true;
                         }
 
                         else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon.
