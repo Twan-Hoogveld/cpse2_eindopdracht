@@ -90,7 +90,7 @@ int main()
                         sf::Vector2f minVal = {0,0};
                         sf::Vector2f maxVal = {20,170};
                         sf::Vector2f minValSelector = {25,0};
-                        sf::Vector2f maxValSelector = {25,50};
+                        sf::Vector2f maxValSelector = {45,50};
 
                         if( position.x >= minVal.x && position.x <= maxVal.x && position.y >= minVal.y && position.y <= maxVal.y)
                         {
