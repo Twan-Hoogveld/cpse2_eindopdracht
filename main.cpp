@@ -56,7 +56,7 @@ int main()
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     //---------------------------------------------------------------------------
     sf::Image img;
-    img.loadFromFile("..//arrows.png");
+    img.loadFromFile("..//move.png"); //Double for linux
     sf::Texture texture;
     texture.loadFromImage(img);
     sf::Sprite sprite(texture);
@@ -156,7 +156,7 @@ int main()
         //Draw all the items that were created during this run.
         collection.drawObjects(window);
 
-        //Draw all the sprites
+        //Draw all the sprites 
         window.draw(sprite);
 
         //Display it all.
