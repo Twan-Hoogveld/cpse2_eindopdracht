@@ -11,12 +11,9 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(400, 400), "BloxBox");
-    CollectionMoveables<42> collection = {}; //Items go here when the are created dynamically.
+    CollectionMoveables<10> collection = {}; //Items go here when the are created dynamically.
     shared_ptr<MoveableObject> active_object; //last selected object.
     auto defaultColor = sf::Color::Red; //Red would be the standard color of the selectors.
-
-    // collection.add(make_shared<Circle>(sf::Vector2f{25,25}, 20, defaultColor)); //Selector for Circle
-    // collection.add(make_shared<Rectangle>(sf::Vector2f{25,25}, sf::Vector2f{30,30}, defaultColor)); //Selector for Rect
 
     //--------------------SHAPE SELECTOR-------------------------------------------------------
     sf::RectangleShape squareBox(sf::Vector2f{20,20});
@@ -144,7 +141,7 @@ int main()
                         else if(sprite.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "move tool is selected" << std::endl;
-                            if (deleteChosen == true){deleteChosen == false;}
+                            deleteChosen == false;
                             moveChosen = true;
                         }
 
@@ -152,7 +149,7 @@ int main()
                         else if(sprite2.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "delete tool is selected" << std::endl;
-                            if (moveChosen == true){moveChosen == false;}
+                            moveChosen == false;
                             deleteChosen = true;
                         }
 
@@ -161,7 +158,6 @@ int main()
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                             std::cout << "Active Object = " << active_object << std::endl;
                             if (deleteChosen == true){
-                                std::cout << "deleting.. " << std::endl;
                                 collection.remove(active_object);
                             }
                         }
