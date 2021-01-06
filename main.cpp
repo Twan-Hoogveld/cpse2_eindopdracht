@@ -56,7 +56,7 @@ int main()
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     //---------------------------------------------------------------------------
     sf::Image img;
-    img.loadFromFile("~/cpse2_eindopdracht/arrows.png");
+    img.loadFromFile("../arrows.png");
     sf::Texture texture;
     texture.loadFromImage(img);
     sf::Sprite sprite(texture);
