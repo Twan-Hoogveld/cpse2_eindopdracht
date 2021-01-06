@@ -65,7 +65,7 @@ int main()
 
     //----------------------------DELETE TOOL------------------------------------------------
     sf::Image img2;
-    img2.loadFromFile("..//trash.png");
+    img2.loadFromFile("..//trash.jpg");
     sf::Texture texture2;
     texture.loadFromImage(img2);
     sf::Sprite sprite2(texture2);
