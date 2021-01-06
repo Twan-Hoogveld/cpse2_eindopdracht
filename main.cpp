@@ -55,9 +55,10 @@ int main()
 
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     //---------------------------------------------------------------------------
+    sf::Image img;
+    img.loadFromFile("move.png");
     sf::Texture texture;
-    texture.setRepeated(false);
-    texture.loadFromFile("move.png");
+    texture.loadFromImage(img);
     sf::Sprite sprite(texture);
     sprite.setPosition(0,175);
 // -------------------------------------------------------------------------------
