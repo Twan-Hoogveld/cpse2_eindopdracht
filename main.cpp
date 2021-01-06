@@ -155,9 +155,12 @@ int main()
                             deleteChosen = true;
                         }
 
-                        else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon.
+                        else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                         {
-                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                            active_object = collection.getObject(sf::Mouse::getPosition(window));
+                            if (deleteChosen == true){
+                                collection.remove(active_object);
+                            }
                         }
                     }
             }
