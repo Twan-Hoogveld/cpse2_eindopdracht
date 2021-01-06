@@ -5,6 +5,8 @@
 #include "NotMoveableCollection.hpp"
 #include "Factory.hpp"
 #include "Action.hpp"
+#include <unistd.h>
+
 
 int main()
 {
@@ -104,6 +106,7 @@ int main()
                             while(mouseIsClickedOnce){ //Zolang de gebruiker niet klikt, blijft de circel meebewegen met de muis
                                 auto mPos = sf::Mouse::getPosition(window);
                                 active_object->jump(sf::Vector2f(mPos.x,mPos.y));
+                                usleep(1000);
                             }
                         }
 
