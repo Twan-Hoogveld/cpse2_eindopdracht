@@ -72,6 +72,8 @@ int main()
 
             if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left)){ //draggin'
                 std::cout << "dRag and drop" << std::endl;
+                auto mPos = sf::Mouse::getPosition(window);
+                active_object->jump(sf::Vector2f(mPos.x,mPos.y));
             }
 
             if (event.type == sf::Event::MouseButtonPressed) //clicking
