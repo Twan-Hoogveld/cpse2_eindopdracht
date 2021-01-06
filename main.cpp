@@ -79,11 +79,12 @@ int main()
                       Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); std::cout << "Move Down \n"; })};
 
     //-----------------------------------------------------------------------------------------
+    bool moveChosen = false;
+    bool deleteChosen = false;
+    
     while (window.isOpen())
     {
         sf::Event event;
-        bool moveChosen = false;
-        bool deleteChosen = false;
 
         while (window.pollEvent(event))
         {
