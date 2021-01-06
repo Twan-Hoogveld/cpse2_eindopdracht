@@ -9,7 +9,7 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(400, 400), "BloxBox");
-    CollectionMoveables<10> collection = {}; //Items go here when the are created dynamically.
+    CollectionMoveables<42> collection = {}; //Items go here when the are created dynamically.
     shared_ptr<MoveableObject> active_object; //last selected object.
     auto defaultColor = sf::Color::Red; //Red would be the standard color of the selectors.
 
@@ -84,9 +84,8 @@ int main()
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
-                        std::cout << active_object << std::endl;
-                        std::cout << "Active  Object is selected" << std::endl;
-                        collection.add(make_shared<Circle>(sf::Vector2f{50,50}, 20, defaultColor)); //Selector for Circle
+                        std::cout << "Memory Adress of active_object: " << active_object << std::endl;
+                        std::cout << "Location of the Object : " << active_object->getBound().height;
                     }
 
                     for(auto x: colors)
