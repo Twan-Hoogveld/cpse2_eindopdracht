@@ -28,19 +28,26 @@ class Storage {
     }
   }
 
+  void fillGaps(){
+    for(unsigned int i = count; i > 0; i--)
+    {
+      std::cout << "store[" << i << "] =" << store[i] << std::endl;
+    }
+  }
+
   void remove(const T &to_remove)
   {
     for (unsigned i = 0; i < count; i++)
     {
       if(store[i] != nullptr)
       {
-        std::cout << store[i] << std::endl;
         if(store[i] == to_remove)
         {
           store[i] = nullptr; //Segmentation fault when you reach store[i] now and try to do something with it.
         }
       }
     }
+    fillGaps();
   }
 
   T *begin() { return store; }
