@@ -36,9 +36,7 @@ class CollectionMoveables {
 	}
 
 	void drawObjects(RenderWindow& window){
-		std::cout << "drawing.. .... " << std::endl;
 		for(auto object : storage){
-			std::cout << object << std::endl;
 			if(object != nullptr){
 				object->draw(window);
 			}
