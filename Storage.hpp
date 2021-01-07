@@ -51,7 +51,6 @@ class Storage {
       }
     }
     std::cout << "end of remove" << std::endl;
-    for (auto x : store){std::cout << x << std::endl;}
     fillGaps();
   }
 
