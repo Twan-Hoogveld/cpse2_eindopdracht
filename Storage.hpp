@@ -32,9 +32,12 @@ class Storage {
   {
     for (unsigned i = 0; i < count; i++)
     {
-      if(store[i] != nullptr && store[i] == to_remove)
+      if(store[i] != nullptr)
       {
-        store[i] = nullptr; //Segmentation fault when you reach store[i] now and try to do something with it.
+        if(store[i] == to_remove)
+        {
+          store[i] = nullptr; //Segmentation fault when you reach store[i] now and try to do something with it.
+        }
       }
     }
   }
