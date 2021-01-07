@@ -24,13 +24,9 @@ class Storage {
     {
       if(store[i] == to_remove)
       {
-        // store[i].reset();
-        std::cout << store[i].unique() << std::endl;
         store[i] == nullptr;
+        std::cout << store[i] << std::endl;
       }
-    }
-    for (unsigned int i = 0; i < count; i++){
-      std::cout << store[i] << std::endl;
     }
   }
 
