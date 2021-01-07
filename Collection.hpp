@@ -32,7 +32,7 @@ class CollectionMoveables {
 				return object;
 			}
 		}
-		return make_shared<DummyMoveableObject>();
+		return make_shared<DummyMoveableObject>(); //if none is clicked..
 	}
 
 	void drawObjects(RenderWindow& window){
