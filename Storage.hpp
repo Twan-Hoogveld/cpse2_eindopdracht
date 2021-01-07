@@ -26,8 +26,10 @@ class Storage {
       {
         // store[i].reset();
         std::cout << store[i].unique() << std::endl;
+        store[i] == nullptr;
       }
     }
+    
   }
 
   T *begin() { return store; }
