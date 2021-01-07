@@ -29,14 +29,17 @@ class Storage {
   }
 
   void fillGaps(){
+    std::cout << "=========FILL GAPS==============" << std::endl;
     for(unsigned int i = count; i >= 0; i--)
     {
       std::cout << "store[" << i << "] =" << store[i] << std::endl;
     }
+    std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
 
   void remove(const T &to_remove)
   {
+    std::cout << "start of remove" << std::endl;
     for (unsigned i = 0; i < count; i++)
     {
       if(store[i] != nullptr)
@@ -47,6 +50,8 @@ class Storage {
         }
       }
     }
+    std::cout << "end of remove" << std::endl;
+    for (auto x : store){std::cout << x << std::endl;}
     fillGaps();
   }
 
