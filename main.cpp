@@ -90,7 +90,7 @@ int main()
                 window.close();
             }
 
-            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true)
             {
                 auto mPos = sf::Mouse::getPosition(window);
                 active_object->jump(sf::Vector2f(mPos.x,mPos.y));
@@ -153,7 +153,7 @@ int main()
                             deleteChosen = true;
                         }
 
-                        else //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
+                        else if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                         {
                             std::cout << "DELETING " << std::endl;
                             std::cout << active_object << std::endl;
