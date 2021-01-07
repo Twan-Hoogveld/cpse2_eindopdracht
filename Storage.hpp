@@ -34,6 +34,7 @@ class Storage {
     {
       if(store[i] != nullptr)
       {
+        std::cout << store[i] << std::endl;
         if(store[i] == to_remove)
         {
           store[i] = nullptr; //Segmentation fault when you reach store[i] now and try to do something with it.
