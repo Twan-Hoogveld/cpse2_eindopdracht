@@ -163,6 +163,11 @@ int main()
                                 collection.remove(active_object);
                             }
                         }
+
+                        else{
+                            //This would just be selecting
+                            active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        }
                     }
             }
 
