@@ -29,7 +29,9 @@ class Storage {
         store[i] == nullptr;
       }
     }
-    
+    for (unsigned int i = 0; i < count; i++){
+      std::cout << store[i] << std::endl;
+    }
   }
 
   T *begin() { return store; }
