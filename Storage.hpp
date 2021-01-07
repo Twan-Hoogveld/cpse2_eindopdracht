@@ -33,7 +33,9 @@ class Storage {
     for(unsigned int i = count; i >= 0; i--)
     {
       std::cout << i;
-      std::cout << "store[" << i << "] =" << store[i] << std::endl;
+      if ( store[i] != nullptr){
+        std::cout << "store[" << i << "] =" << store[i] << std::endl;
+      }
     }
     std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
