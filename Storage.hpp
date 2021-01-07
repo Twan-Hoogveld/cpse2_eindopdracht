@@ -24,7 +24,7 @@ class Storage {
     {
       if(store[i] == to_remove)
       {
-        store[i] == nullptr;
+        store[i] = nullptr;
         std::cout << store[i] << std::endl;
       }
     }
