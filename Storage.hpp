@@ -24,9 +24,13 @@ class Storage {
     {
       if(store[i] == to_remove)
       {
-        store[i] = nullptr;
+        store[i] = nullptr; //Segmentation fault when you reach store[i] now.
       }
     }
+    for (unsigned int i = 0; i < count; i++){
+      std::cout << store[i] << ' ';
+    }
+    std::cout << "end" << std::endl;
   }
 
   T *begin() { return store; }
