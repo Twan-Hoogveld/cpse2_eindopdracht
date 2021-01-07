@@ -11,7 +11,18 @@ class Storage {
 
  public:
   void add(const T &to_add) {
-    if (count < N) {
+    bool added = false;
+
+    if (count >= 1){ //If there is at least 1 element.
+      for(unsigned int i = 0; i < count; i++){
+        if (store[i] == nullptr) //if we find a nullptr
+        { 
+          store[i] = to_add;
+          added = true;
+        }
+      }
+    }
+    if (count < N && added == false) {
       store[count] = to_add;
       ++count;
     }
@@ -24,7 +35,7 @@ class Storage {
     {
       if(store[i] == to_remove)
       {
-        store[i] = nullptr; //Segmentation fault when you reach store[i] now.
+        store[i] = nullptr; //Segmentation fault when you reach store[i] now and try to do something with it.
       }
     }
     for (unsigned int i = 0; i < count; i++){
