@@ -29,7 +29,7 @@ class Storage {
   }
 
   void fillGaps(){
-    for(unsigned int i = count; i > 0; i--)
+    for(unsigned int i = count; i >= 0; i--)
     {
       std::cout << "store[" << i << "] =" << store[i] << std::endl;
     }
