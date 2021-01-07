@@ -30,12 +30,9 @@ class Storage {
 
   void fillGaps(){
     std::cout << "=========FILL GAPS==============" << std::endl;
-    for(unsigned int i = count; i >= 0; i--)
+    for (const auto x : store)
     {
-      std::cout << i;
-      if ( store[i] != nullptr){
-        std::cout << "store[" << i << "] =" << store[i] << std::endl;
-      }
+      if ( x != nullptr ) { std::cout << x << std::endl;}
     }
     std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
