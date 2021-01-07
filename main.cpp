@@ -159,6 +159,7 @@ int main()
                             std::cout << "Active Object = " << active_object << std::endl;
                             if (deleteChosen == true){
                                 collection.remove(active_object);
+                                active_object = collection.getObject(sf::Mouse::getPosition(window));
                             }
                         }
                     }
