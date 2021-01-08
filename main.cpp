@@ -104,11 +104,14 @@ int main()
             {
                 std::cout << "we in the loop" << std::endl;
                 auto position = sf::Mouse::getPosition(window);
+                std::cout << "do we even reach this? 1 ";
 
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
+                    std::cout << "do we even reach this? 2 ";
                     for(auto x: colors) //Did you click on the colors?
                         {
+                            std::cout << "do we even reach this? 3 ";
                             auto globalBounds = x.getGlobalBounds();
                             if(globalBounds.contains(position.x,position.y))
                             {
@@ -118,9 +121,11 @@ int main()
                                 moveChosen = true;
                             }
                         }
+                        std::cout << "do we even reach this? 4 ";
+                    std::cout << "do we even reach this? 5 ";
                     } 
 
-                    std::cout << "do we even reach this? 1 ";
+                    std::cout << "do we even reach this? 6 ";
                     //Is the Circle Clicked?
                     if(circleBox.getGlobalBounds().contains(position.x,position.y))
                     {
