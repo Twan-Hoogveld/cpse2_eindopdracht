@@ -100,94 +100,90 @@ int main()
             if (event.type == sf::Event::MouseButtonPressed)
             {
                 auto position = sf::Mouse::getPosition(window);
+
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
-
-                        sf::Vector2f minVal = {0,0};
-                        sf::Vector2f maxVal = {20,170};
-
-                        if( position.x >= minVal.x && position.x <= maxVal.x && position.y >= minVal.y && position.y <= maxVal.y)
+                    for(auto x: colors) //Did you click on the colors?
                         {
-                            for(auto x: colors)
+                            auto globalBounds = x.getGlobalBounds();
+                            if(globalBounds.contains(position.x,position.y))
                             {
-                                auto globalBounds = x.getGlobalBounds();
-                                if(globalBounds.contains(position.x,position.y))
-                                {
-                                    squareBox.setFillColor(x.getFillColor());
-                                    circleBox.setFillColor(x.getFillColor());
-                                    colorChosen = true;
-                                    moveChosen = true;
-                                }
+                                squareBox.setFillColor(x.getFillColor());
+                                circleBox.setFillColor(x.getFillColor());
+                                colorChosen = true;
+                                moveChosen = true;
                             }
-                        } 
-
-                        //Is the Circle Clicked?
-                        else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
-                            collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
-                            
-                            //Select the newly created object as active. this is kinda buggy right now. should fix.
-                            sf::Mouse::setPosition(sf::Vector2i(60,35),window);
-                            active_object = collection.getObject(sf::Mouse::getPosition(window));
-                            }
-
-                        //Is the Rectangle clicked?
-                        else if(squareBox.getGlobalBounds().contains(position.x,position.y))
-                        {
-                            collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
-
-                            //Select the newly created object as active. this is kinda buggy right now. should fix.
-                            sf::Mouse::setPosition(sf::Vector2i(60,35),window);
-                            active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
+                    } 
 
-                        //Is the move tool selected?
-                        else if(sprite.getGlobalBounds().contains(position.x,position.y))
-                        {
-                            std::cout << "move tool is selected" << std::endl;
-                            deleteChosen = false;
-                            moveChosen = true;
-                        }
+                    //Is the Circle Clicked?
+                    else if(circleBox.getGlobalBounds().contains(position.x,position.y))
+                    {
+                        collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
+                        
+                        //Select the newly created object as active. this is kinda buggy right now. should fix.
+                        sf::Mouse::setPosition(sf::Vector2i(60,35),window);
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    }
 
-                        //Is the delete tool selected?
-                        else if(sprite2.getGlobalBounds().contains(position.x,position.y))
-                        {
-                            std::cout << "delete tool is selected" << std::endl;
-                            moveChosen = false;
-                            deleteChosen = true;
-                        }
+                    //Is the Rectangle clicked?
+                    else if(squareBox.getGlobalBounds().contains(position.x,position.y))
+                    {
+                        collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
 
-                        else if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
+                        //Select the newly created object as active. this is kinda buggy right now. should fix.
+                        sf::Mouse::setPosition(sf::Vector2i(60,35),window);
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    }
+
+                    //Is the move tool selected?
+                    else if(sprite.getGlobalBounds().contains(position.x,position.y))
+                    {
+                        std::cout << "move tool is selected" << std::endl;
+                        deleteChosen = false;
+                        moveChosen = true;
+                    }
+
+                    //Is the delete tool selected?
+                    else if(sprite2.getGlobalBounds().contains(position.x,position.y))
+                    {
+                        std::cout << "delete tool is selected" << std::endl;
+                        moveChosen = false;
+                        deleteChosen = true;
+                    }
+
+                    else if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
+                    {
+                        std::cout << "DELETING ";
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        std::cout << active_object << std::endl;
+                        if (active_object != nullptr)
                         {
-                            std::cout << "DELETING ";
-                            active_object = collection.getObject(sf::Mouse::getPosition(window));
-                            std::cout << active_object << std::endl;
-                            if (active_object != nullptr)
+                            std::cout << "Active Object = " << active_object << std::endl;
+                            if (deleteChosen == true)
                             {
-                                std::cout << "Active Object = " << active_object << std::endl;
-                                if (deleteChosen == true)
-                                {
-                                    collection.remove(active_object);
-                                    active_object = nullptr;
-                                    std::cout << "DELETE FUNCTION DONE." << std::endl;
-                                }
+                                collection.remove(active_object);
+                                active_object = nullptr;
+                                std::cout << "DELETE FUNCTION DONE." << std::endl;
                             }
-                        }
-
-                        else{
-                            //This would just be selecting
-                            active_object = collection.getObject(sf::Mouse::getPosition(window));
-                            std::cout << active_object << std::endl;
-                            collection.showStack();
                         }
                     }
-            }
 
-            //Do all the actions.
-            for (auto& Action : actions) 
-            {
-                Action();
+                    else
+                    {
+                        //This would just be selecting
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        std::cout << active_object << std::endl;
+                        collection.showStack();
+                    }
             }
         }
+
+            //Do all the actions. not really used right now.
+            // for (auto& Action : actions) 
+            // {
+            //     Action();
+            // }
 
         //Clear the window of the old.
         window.clear();
