@@ -127,6 +127,14 @@ int main()
                                 break;
                             }
                         }
+                        for(auto x: sprites)
+                        {
+                            auto globalBounds = x.getGlobalBounds();
+                            if(globalBounds.contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                            {
+                                std::cout << "user clicked on a sprite" << std::endl;
+                            }
+                        }
                     } 
 
                 //Is the Circle Clicked? Make a new circle, the user can now, if in move mode, move the object.
