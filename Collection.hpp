@@ -30,10 +30,15 @@ class CollectionMoveables {
 	}
 
 	shared_ptr<MoveableObject> getObject(const Vector2i& mouse_pos){
-		for(auto object : storage){
-			FloatRect boundary = object->getBound();
-			if(boundary.contains(Vector2f(mouse_pos))){
+		for(auto object : storage)
+		{
+			if (object != nullptr)
+			{
+				FloatRect boundary = object->getBound();
+				if(boundary.contains(Vector2f(mouse_pos)))
+				{
 				return object;
+				}
 			}
 		}
 		return make_shared<DummyMoveableObject>(); //if none is clicked..

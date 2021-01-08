@@ -93,18 +93,13 @@ int main()
 
             if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true && active_object != nullptr)
             {
-                if (active_object != nullptr)
-                {
                 auto mPos = sf::Mouse::getPosition(window);
-                active_object->jump(sf::Vector2f(mPos.x,mPos.y));
-                }
+                active_object->jump(sf::Vector2f(mPos.x,mPos.y)); 
             }
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
-                std::cout << "we in the loop" << std::endl;
                 std::cout << "do we even reach this? 1 ";
-
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
                     std::cout << "do we even reach this? 2 ";
