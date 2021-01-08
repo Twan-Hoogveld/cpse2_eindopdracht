@@ -105,6 +105,7 @@ int main()
                                 squareBox.setFillColor(currentColor);
                                 circleBox.setFillColor(currentColor);
                                 colorChosen = true;
+                                moveChosen = false;
                                 break;
                             }
                         }
