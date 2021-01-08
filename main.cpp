@@ -143,14 +143,14 @@ int main()
                     }
 
                 //Is the delete tool selected?
-                if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                else if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         moveChosen = false;
                         deleteChosen = true;
                         colorChosen = false;
                     }
 
-                if(deleteChosen == true) 
+                else if(deleteChosen == true) 
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         if (active_object != nullptr)
@@ -164,7 +164,7 @@ int main()
                     }
 
                     //It's not a button of any kind, so it's a random position.
-                    else
+                else
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         if (colorChosen){active_object.get()->setFillColor(sf::Color::Cyan); colorChosen = false;}
