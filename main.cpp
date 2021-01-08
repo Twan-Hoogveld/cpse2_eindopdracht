@@ -115,7 +115,6 @@ int main()
                 if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,currentColor));
-
                     }
 
                 //Is the Rectangle clicked? Make a new rect, the user can now, if in move mode, move the object.
@@ -162,6 +161,10 @@ int main()
                         active_object->setFillColor(sf::Color::Cyan); 
                         colorChosen = false;
                     }
+                else
+                {
+                    active_object = collection.getObject(sf::Mouse::getPosition(window));
+                }
             }
         }
 
