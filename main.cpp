@@ -176,6 +176,7 @@ int main()
                         else{
                             //This would just be selecting
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
+                            std::cout << active_object << std::endl;
                         }
                     }
             }
