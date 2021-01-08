@@ -19,6 +19,7 @@ class Rectangle : public MoveableObject {
 		    diff_pos = pos2 - pos;
         rect.setFillColor(color);
         rect.setPosition(pos);
+        rect.setOutlineThickness(2);
       }
 
   void move(const Vector2f& velo) override
