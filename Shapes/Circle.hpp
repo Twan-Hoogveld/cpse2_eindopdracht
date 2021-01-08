@@ -57,6 +57,11 @@ class Circle : public MoveableObject {
     circle.setScale(x,y);
   }
 
+  sf::Vector2f getScale() override
+  {
+    return circle.getScale();
+  }
+
 };
 
 #endif  // CIRCLE_HPP

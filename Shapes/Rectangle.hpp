@@ -53,6 +53,12 @@ class Rectangle : public MoveableObject {
   {
     rect.setScale(x,y);
   }
+
+  sf::Vector2f getScale() override
+  {
+    return rect.getScale();
+  }
+
 };
 
 #endif  // RECTANGLE_HPP

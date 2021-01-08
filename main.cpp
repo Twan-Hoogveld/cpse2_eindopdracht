@@ -163,24 +163,24 @@ int main()
                         deleteChosen = true;
                     }
 
-                //Is the minus tool selected?
+                //Is the plus tool selected?
                 if(sprite3.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         moveChosen = false;
                         colorChosen = false;
                         deleteChosen = false;
-                        plusChosen = false;
-                        minusChosen = true;
+                        plusChosen = true;
+                        minusChosen = false;
                     }
 
-                //Is the plus tool selected?
+                //Is the minus tool selected?
                 if(sprite4.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         moveChosen = false;
                         colorChosen = false;
                         deleteChosen = false;
-                        minusChosen = false;
-                        plusChosen = true;
+                        minusChosen = true;
+                        plusChosen = false;
                     }
 
                 //Delete the object you clicked on if you are in delete mode.
@@ -207,13 +207,14 @@ int main()
                 if (minusChosen)
                     {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
-                    active_object->setScale(0.9,0.9);
+                    auto scale = active_object->getScale();
+                    active_object->setScale(scale.x - 0.1 ,scale.y - 0.1);
                     }
                 if (plusChosen)
                 {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
-                    active_object->setScale(1.1,1.1);
-                }
+                    auto scale = active_object->getScale();
+                    active_object->setScale(scale.x + 0.1 ,scale.y + 0.1);                }
                 else
                     {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
