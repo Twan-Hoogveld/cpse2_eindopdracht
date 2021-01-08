@@ -86,6 +86,7 @@ int main()
             }
 
             //Move the last selected Object
+            std::cout << moveChosen << "===== " << active_object << std::endl;
             if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true && active_object != nullptr)
             {
                 auto mPos = sf::Mouse::getPosition(window);
