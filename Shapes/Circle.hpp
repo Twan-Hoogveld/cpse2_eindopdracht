@@ -18,6 +18,7 @@ class Circle : public MoveableObject {
     circle.setFillColor(col);
     circle.setPosition(pos);
     circle.setOutlineThickness(2);
+    circle.setOutlineColor(color);
   }
 
 	void move(const Vector2f& velo) override

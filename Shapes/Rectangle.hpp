@@ -20,6 +20,7 @@ class Rectangle : public MoveableObject {
         rect.setFillColor(color);
         rect.setPosition(pos);
         rect.setOutlineThickness(2);
+        rect.setOutlineColor(color);
       }
 
   void move(const Vector2f& velo) override
