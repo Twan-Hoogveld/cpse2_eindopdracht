@@ -116,6 +116,7 @@ int main()
                                     squareBox.setFillColor(x.getFillColor());
                                     circleBox.setFillColor(x.getFillColor());
                                     colorChosen = true;
+                                    moveChosen = true;
                                 }
                             }
                         } 
@@ -143,7 +144,7 @@ int main()
                         else if(sprite.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "move tool is selected" << std::endl;
-                            deleteChosen == false;
+                            deleteChosen = false;
                             moveChosen = true;
                         }
 
@@ -151,7 +152,7 @@ int main()
                         else if(sprite2.getGlobalBounds().contains(position.x,position.y))
                         {
                             std::cout << "delete tool is selected" << std::endl;
-                            moveChosen == false;
+                            moveChosen = false;
                             deleteChosen = true;
                         }
 
