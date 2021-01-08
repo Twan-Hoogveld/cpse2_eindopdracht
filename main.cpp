@@ -158,9 +158,9 @@ int main()
 
                         else if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                         {
-                            std::cout << "DELETING " << std::endl;
+                            std::cout << "DELETING ";
+                            active_object = collection.getObject(sf::Mouse::getPosition(window));
                             std::cout << active_object << std::endl;
-                            //active_object = collection.getObject(sf::Mouse::getPosition(window));
                             if (active_object != nullptr)
                             {
                                 std::cout << "Active Object = " << active_object << std::endl;
