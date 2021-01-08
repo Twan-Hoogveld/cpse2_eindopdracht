@@ -46,7 +46,6 @@ int main()
     sf::RectangleShape cyanBox(sf::Vector2f(20,20));
     cyanBox.setFillColor(sf::Color::Cyan);
     cyanBox.setPosition(0,150);
-    std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     //----------------------MOVE TOOL---------------------------------------------
     sf::Image img;
     img.loadFromFile("..//img//move.png"); //Double for linux
@@ -55,7 +54,6 @@ int main()
     sf::Sprite sprite(texture);
     sprite.setPosition(0,175);
     sprite.scale(sf::Vector2f(0.1,0.1));
-
     //----------------------------DELETE TOOL------------------------------------------------
     sf::Image img2;
     img2.loadFromFile("..//img//trash.jpg");
@@ -80,8 +78,17 @@ int main()
     sf::Sprite sprite4(texture4);
     sprite4.setPosition(0,210);
     sprite4.scale(sf::Vector2f(0.03,0.03));
-    
-    std::vector<sf::Sprite> sprites = {sprite,sprite2,sprite3,sprite4};
+    //=================OUTLINE TOGGLE==========================================================
+    sf::Image img5;
+    img5.loadFromFile("..//img//outline.png");
+    sf::Texture texture5;
+    texture5.loadFromImage(img5);
+    sf::Sprite sprite5(texture5);
+    sprite5.setPosition(0,250);
+    sprite5.scale(sf::Vector2f(0.1,0.1));
+    //=========================================================================================
+    std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
+    std::vector<sf::Sprite> sprites = {sprite,sprite2,sprite3,sprite4,sprite5};
     //=========================================================================================
     bool moveChosen = false;
     bool deleteChosen = false;
@@ -110,7 +117,7 @@ int main()
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
-                if (event.mouseButton.button == sf::Mouse::Left) //is any of the colors clicked?
+                if (event.mouseButton.button == sf::Mouse::Left) //are any of the colors clicked?
                     {
                     for(auto x: colors)
                         {
