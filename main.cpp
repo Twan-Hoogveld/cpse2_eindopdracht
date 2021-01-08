@@ -78,6 +78,7 @@ int main()
     //-----------------------------------------------------------------------------------------
     bool moveChosen = false;
     bool deleteChosen = false;
+    bool colorChosen = false;
     
     while (window.isOpen())
     {
@@ -114,6 +115,7 @@ int main()
                                 {
                                     squareBox.setFillColor(x.getFillColor());
                                     circleBox.setFillColor(x.getFillColor());
+                                    colorChosen = true;
                                 }
                             }
                         } 
