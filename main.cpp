@@ -129,7 +129,7 @@ int main()
                         deleteChosen = false;
                         colorChosen = false;
                         moveChosen = true;
-
+                        std::cout << "move is chosen." << std::endl;
                     }
 
                 //Is the delete tool selected?
