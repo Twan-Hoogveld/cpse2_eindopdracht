@@ -40,7 +40,7 @@ class Storage {
     std::cout << "=========FILL GAPS==============SHOULD PRINT ALL ALIVE OBJECTS" << std::endl;
     for (unsigned int i = 0; i < count; i++)
     {
-      if ( store[i] == nullptr ) { store[i] = to_add; }
+      if ( store[i] == nullptr ) { store[i] = to_add; std::cout << "added " << std::endl; }
     }
     std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
