@@ -159,7 +159,7 @@ int main()
                 if (colorChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
-                        active_object.get()->setFillColor(sf::Color::Cyan); 
+                        active_object->setFillColor(sf::Color::Cyan); 
                         colorChosen = false;
                     }
             }
