@@ -139,6 +139,7 @@ int main()
 
                     }
 
+                //Delete the object you clicked on if you are in delete mode.
                 if(deleteChosen == true) 
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
@@ -152,12 +153,11 @@ int main()
                         }
                     }
 
-                    //It's not a button of any kind, so it's a random position.
-                std::cout << "color chosen = " << colorChosen << std::endl;
+                //If you are in color choose mode, you can change any objects color.
                 if (colorChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
-                        active_object->setFillColor(sf::Color::Cyan); 
+                        active_object->setFillColor(currentColor); 
                     }
                 else
                 {
