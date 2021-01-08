@@ -11,20 +11,9 @@ class Storage {
 
  public:
   void add(const T &to_add) {
-    bool added = false;
     if (to_add != nullptr)
     {
-      if (count >= 1)
-      { //If there is at least 1 element.
-        for(unsigned int i = 0; i < count; i++){
-          if (store[i] == nullptr) //if we find a nullptr
-          { 
-            store[i] = to_add;
-            added = true;
-          }
-        }
-      }
-      if (count < N && added == false) 
+      if (count < N) 
       {
         store[count] = to_add;
         ++count;
@@ -44,10 +33,9 @@ class Storage {
       if ( store[i] == nullptr ) 
       { 
         store[i] = to_add; 
-        std::cout << "added " << std::endl; 
-        added = true;
+        std::cout << "ADDEDEDEDEDEDEDEDEDD \n\n\n\n\n\n\n " << std::endl; 
+        break;
       }
-      if (added) {break;}
     }
     std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
