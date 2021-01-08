@@ -141,7 +141,7 @@ int main()
 
                     }
 
-                else if(deleteChosen == true) 
+                if(deleteChosen == true) 
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         if (active_object != nullptr)
@@ -155,7 +155,7 @@ int main()
                     }
 
                     //It's not a button of any kind, so it's a random position.
-                else if (colorChosen)
+                if (colorChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         active_object.get()->setFillColor(sf::Color::Cyan); 
