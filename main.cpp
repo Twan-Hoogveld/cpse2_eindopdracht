@@ -86,7 +86,6 @@ int main()
             }
 
             //Move the last selected Object
-            std::cout << moveChosen << "===== " << active_object << std::endl;
             if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true && active_object != nullptr)
             {
                 auto mPos = sf::Mouse::getPosition(window);
@@ -129,7 +128,6 @@ int main()
                         deleteChosen = false;
                         colorChosen = false;
                         moveChosen = true;
-                        std::cout << "move is chosen." << std::endl;
                     }
 
                 //Is the delete tool selected?
@@ -155,6 +153,7 @@ int main()
                     }
 
                     //It's not a button of any kind, so it's a random position.
+                std::cout << "color chosen = " << colorChosen << std::endl;
                 if (colorChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
