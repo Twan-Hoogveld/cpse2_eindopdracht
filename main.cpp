@@ -74,16 +74,18 @@ int main()
     sf::Texture texture3;
     texture3.loadFromImage(img3);
     sf::Sprite sprite3(texture3);
-    sprite3.setPosition(25,200);
-    sprite3.scale(sf::Vector2f(0.02,0.02));
+    sprite3.setPosition(25,210);
+    sprite3.scale(sf::Vector2f(0.03,0.03));
     //=============================MINUS=======================================================
     sf::Image img4;
     img4.loadFromFile("..//minus.png");
     sf::Texture texture4;
     texture4.loadFromImage(img4);
     sf::Sprite sprite4(texture4);
-    sprite4.setPosition(0,200);
-    sprite4.scale(sf::Vector2f(0.02,0.02));
+    sprite4.setPosition(0,210);
+    sprite4.scale(sf::Vector2f(0.03,0.03));
+    
+    std::vector<sf::Sprite> sprites = {sprite,sprite2,sprite3,sprite4};
     //=========================================================================================
     bool moveChosen = false;
     bool deleteChosen = false;
@@ -187,7 +189,8 @@ int main()
         window.clear();
 
         //Draw the color tiles.
-        for(auto x : colors){
+        for(auto x : colors)
+        {
             window.draw(x);
         }
 
@@ -198,11 +201,11 @@ int main()
         //Draw all the items that were created during this run.
         collection.drawObjects(window);
 
-        //Draw all the sprites 
-        window.draw(sprite);
-        window.draw(sprite2);
-        window.draw(sprite3);
-        window.draw(sprite4);
+        //Draw all the sprites
+        for(auto x : sprites)
+        {
+        window.draw(x);
+        }
 
         //Display it all.
         window.display();
