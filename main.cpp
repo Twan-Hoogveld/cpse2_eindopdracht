@@ -99,6 +99,7 @@ int main()
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
+                std::cout << "we in the loop" << std::endl;
                 auto position = sf::Mouse::getPosition(window);
 
                 if (event.mouseButton.button == sf::Mouse::Left)
