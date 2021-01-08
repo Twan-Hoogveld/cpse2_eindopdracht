@@ -37,10 +37,17 @@ class Storage {
   }
 
   void fillGaps(const T &to_add){
+    bool added = false;
     std::cout << "=========FILL GAPS==============SHOULD PRINT ALL ALIVE OBJECTS" << std::endl;
     for (unsigned int i = 0; i < count; i++)
     {
-      if ( store[i] == nullptr ) { store[i] = to_add; std::cout << "added " << std::endl; break; }
+      if ( store[i] == nullptr ) 
+      { 
+        store[i] = to_add; 
+        std::cout << "added " << std::endl; 
+        added = true;
+      }
+      if (added) {break;}
     }
     std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
