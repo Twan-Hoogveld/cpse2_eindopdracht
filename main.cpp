@@ -70,7 +70,7 @@ int main()
     sprite2.scale(sf::Vector2f(0.1,0.1));
     //============================PLUS=========================================================
     sf::Image img3;
-    img2.loadFromFile("..//plus.png");
+    img2.loadFromFile("..//plus.jpg");
     sf::Texture texture3;
     texture3.loadFromImage(img3);
     sf::Sprite sprite3(texture3);
@@ -78,7 +78,7 @@ int main()
     sprite3.scale(sf::Vector2f(0.1,0.1));
     //=============================MINUS=======================================================
     sf::Image img4;
-    img4.loadFromFile("..//minus.jpg");
+    img4.loadFromFile("..//minus.png");
     sf::Texture texture4;
     texture4.loadFromImage(img4);
     sf::Sprite sprite4(texture4);
