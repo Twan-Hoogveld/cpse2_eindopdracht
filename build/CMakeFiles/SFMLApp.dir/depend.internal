@@ -76,16 +76,13 @@ CMakeFiles/SFMLApp.dir/main.cpp.o
  /home/twan/SFML-2.5.1-Compiled/include/SFML/Window/Window.hpp
  /home/twan/SFML-2.5.1-Compiled/include/SFML/Window/WindowHandle.hpp
  /home/twan/SFML-2.5.1-Compiled/include/SFML/Window/WindowStyle.hpp
- /home/twan/cpse2/Action.hpp
  /home/twan/cpse2/Collection.hpp
  /home/twan/cpse2/Factory.hpp
- /home/twan/cpse2/NotMoveableCollection.hpp
  /home/twan/cpse2/Shapes.hpp
  /home/twan/cpse2/Shapes/Circle.hpp
  /home/twan/cpse2/Shapes/Dummy.hpp
  /home/twan/cpse2/Shapes/MoveableObject.hpp
- /home/twan/cpse2/Shapes/NotDummy.hpp
- /home/twan/cpse2/Shapes/NotMoveableObject.hpp
  /home/twan/cpse2/Shapes/Rectangle.hpp
  /home/twan/cpse2/Storage.hpp
  /home/twan/cpse2/main.cpp
+ /home/twan/cpse2/state.hpp

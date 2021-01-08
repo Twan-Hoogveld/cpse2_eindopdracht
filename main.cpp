@@ -2,9 +2,8 @@
 #include <iostream>
 #include <vector>
 #include "Collection.hpp"
-#include "NotMoveableCollection.hpp"
 #include "Factory.hpp"
-#include "Action.hpp"
+#include "state.hpp"
 #include <unistd.h>
 
 
@@ -14,7 +13,6 @@ int main()
     CollectionMoveables<10> collection = {}; //Items go here when the are created dynamically.
     shared_ptr<MoveableObject> active_object; //last selected object.
     sf::Color currentColor = sf::Color::Red; //Red would be the standard color of the selectors.
-
     //--------------------SHAPE SELECTOR-------------------------------------------------------
     sf::RectangleShape squareBox(sf::Vector2f{20,20});
     squareBox.setPosition(25,0);
@@ -49,11 +47,10 @@ int main()
     sf::RectangleShape cyanBox(sf::Vector2f(20,20));
     cyanBox.setFillColor(sf::Color::Cyan);
     cyanBox.setPosition(0,150);
-
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     //----------------------MOVE TOOL---------------------------------------------
     sf::Image img;
-    img.loadFromFile("..//move.png"); //Double for linux
+    img.loadFromFile("..//img//move.png"); //Double for linux
     sf::Texture texture;
     texture.loadFromImage(img);
     sf::Sprite sprite(texture);
@@ -62,7 +59,7 @@ int main()
 
     //----------------------------DELETE TOOL------------------------------------------------
     sf::Image img2;
-    img2.loadFromFile("..//trash.jpg");
+    img2.loadFromFile("..//img//trash.jpg");
     sf::Texture texture2;
     texture2.loadFromImage(img2);
     sf::Sprite sprite2(texture2);
@@ -70,7 +67,7 @@ int main()
     sprite2.scale(sf::Vector2f(0.1,0.1));
     //============================PLUS=========================================================
     sf::Image img3;
-    img3.loadFromFile("..//plus.png");
+    img3.loadFromFile("..//img//plus.png");
     sf::Texture texture3;
     texture3.loadFromImage(img3);
     sf::Sprite sprite3(texture3);
@@ -78,7 +75,7 @@ int main()
     sprite3.scale(sf::Vector2f(0.03,0.03));
     //=============================MINUS=======================================================
     sf::Image img4;
-    img4.loadFromFile("..//minus.png");
+    img4.loadFromFile("..//img//minus.png");
     sf::Texture texture4;
     texture4.loadFromImage(img4);
     sf::Sprite sprite4(texture4);
@@ -92,6 +89,10 @@ int main()
     bool colorChosen = false;
     bool plusChosen = false;
     bool minusChosen = false;
+
+    State moveChosenTest(false);
+    moveChosenTest.reverseState();
+    std::cout << "moveChosenTest " << moveChosenTest << std::endl;
     //==========================================================================================
 
     while (window.isOpen())
