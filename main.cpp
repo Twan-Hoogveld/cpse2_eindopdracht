@@ -99,13 +99,10 @@ int main()
 
             if (event.type == sf::Event::MouseButtonPressed)
             {
-                std::cout << "do we even reach this? 1 ";
                 if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                    std::cout << "do we even reach this? 2 ";
                     for(auto x: colors) //Did you click on the colors?
                         {
-                            std::cout << "do we even reach this? 3 ";
                             auto globalBounds = x.getGlobalBounds();
                             if(globalBounds.contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                             {
@@ -115,11 +112,8 @@ int main()
                                 moveChosen = true;
                             }
                         }
-                        std::cout << "do we even reach this? 4 ";
-                    std::cout << "do we even reach this? 5 ";
                     } 
 
-                    std::cout << "do we even reach this? 6 ";
                     //Is the Circle Clicked?
                     if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
@@ -156,7 +150,6 @@ int main()
                         deleteChosen = true;
                     }
 
-                    std::cout << "do we even reach this? 2 ";
                     if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                     {
                         std::cout << "DELETING ";
