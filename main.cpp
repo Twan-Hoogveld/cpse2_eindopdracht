@@ -93,8 +93,11 @@ int main()
 
             if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true && active_object != nullptr)
             {
+                if (active_object != nullptr)
+                {
                 auto mPos = sf::Mouse::getPosition(window);
                 active_object->jump(sf::Vector2f(mPos.x,mPos.y));
+                }
             }
 
             if (event.type == sf::Event::MouseButtonPressed)
