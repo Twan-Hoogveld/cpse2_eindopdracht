@@ -70,12 +70,12 @@ int main()
     sprite2.scale(sf::Vector2f(0.1,0.1));
 
     // ----------------------------------ACTIONS-----------------------------------------------
-	Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
-                      Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
-                      Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); std::cout << "Move Up \n"; }),
-                      Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); std::cout << "Move Down \n"; })};
+	// Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
+    //                   Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
+    //                   Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); std::cout << "Move Up \n"; }),
+    //                   Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); std::cout << "Move Down \n"; })};
 
-    //-----------------------------------------------------------------------------------------
+    // //-----------------------------------------------------------------------------------------
     bool moveChosen = false;
     bool deleteChosen = false;
     bool colorChosen = false;
@@ -117,6 +117,7 @@ int main()
                         }
                     } 
 
+                    std::cout << "do we even reach this? 1 ";
                     //Is the Circle Clicked?
                     if(circleBox.getGlobalBounds().contains(position.x,position.y))
                     {
@@ -153,7 +154,7 @@ int main()
                         deleteChosen = true;
                     }
 
-                    std::cout << "do we even reach this?";
+                    std::cout << "do we even reach this? 2 ";
                     if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                     {
                         std::cout << "DELETING ";
