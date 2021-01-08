@@ -198,7 +198,7 @@ int main()
                         deleteChosen = false;
                         minusChosen = false;
                         plusChosen = false;
-                        outlineChosen = false;
+                        outlineChosen = true;
 
                     }
 
