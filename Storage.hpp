@@ -30,6 +30,7 @@ class Storage {
         ++count;
       }
       else{
+        std::cout << " can't find empty spot, so we check for nullptr and replace that."
         fillGaps(to_add);
       }
     }
