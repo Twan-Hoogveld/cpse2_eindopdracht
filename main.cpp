@@ -70,7 +70,7 @@ int main()
     sprite2.scale(sf::Vector2f(0.1,0.1));
     //============================PLUS=========================================================
     sf::Image img3;
-    img3.loadFromFile("..//plus.jpg");
+    img3.loadFromFile("..//plus.png");
     sf::Texture texture3;
     texture3.loadFromImage(img3);
     sf::Sprite sprite3(texture3);
@@ -83,7 +83,7 @@ int main()
     texture4.loadFromImage(img4);
     sf::Sprite sprite4(texture4);
     sprite4.setPosition(0,200);
-    sprite4.scale(sf::Vector2f(0.01,0.01));
+    sprite4.scale(sf::Vector2f(0.02,0.02));
     //=========================================================================================
     bool moveChosen = false;
     bool deleteChosen = false;
