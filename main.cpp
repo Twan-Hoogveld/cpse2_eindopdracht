@@ -153,6 +153,7 @@ int main()
                         deleteChosen = true;
                     }
 
+                    std::cout << "do we even reach this?";
                     if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                     {
                         std::cout << "DELETING ";
