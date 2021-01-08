@@ -84,5 +84,4 @@ CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/MoveableObject.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Shapes/Rectangle.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../Storage.hpp
 CMakeFiles/SFMLApp.dir/main.cpp.o: ../main.cpp
-CMakeFiles/SFMLApp.dir/main.cpp.o: ../state.hpp
 

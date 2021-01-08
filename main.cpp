@@ -3,14 +3,13 @@
 #include <vector>
 #include "Collection.hpp"
 #include "Factory.hpp"
-#include "state.hpp"
 #include <unistd.h>
 
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(400, 400), "BloxBox");
-    CollectionMoveables<10> collection = {}; //Items go here when the are created dynamically.
+    CollectionMoveables<10> collection = {}; //Items go here when the are created dynamically. 
     shared_ptr<MoveableObject> active_object; //last selected object.
     sf::Color currentColor = sf::Color::Red; //Red would be the standard color of the selectors.
     //--------------------SHAPE SELECTOR-------------------------------------------------------
@@ -89,10 +88,6 @@ int main()
     bool colorChosen = false;
     bool plusChosen = false;
     bool minusChosen = false;
-
-    State moveChosenTest(false);
-    moveChosenTest.reverseState();
-    std::cout << "moveChosenTest " << moveChosenTest << std::endl;
     //==========================================================================================
 
     while (window.isOpen())
@@ -199,19 +194,19 @@ int main()
                     }
 
                 //If you are in color choose mode, you can change any objects color.
-                if (colorChosen)
+                else if (colorChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         active_object->setFillColor(currentColor); 
                     }
 
-                if (minusChosen)
+                else if (minusChosen)
                     {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
                     auto scale = active_object->getScale();
                     active_object->setScale(scale.x - 0.1 ,scale.y - 0.1);
                     }
-                if (plusChosen)
+                else if (plusChosen)
                 {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
                     auto scale = active_object->getScale();
@@ -242,7 +237,7 @@ int main()
         //Draw all the sprites
         for(auto x : sprites)
         {
-        window.draw(x);
+            window.draw(x);
         }
 
         //Display it all.

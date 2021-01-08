@@ -28,7 +28,6 @@ Shapes/Circle.hpp
 Shapes/Rectangle.hpp 
 Shapes/MoveableObject.hpp 
 Shapes/Dummy.hpp
-state.hpp
 )
 
 target_link_libraries (SFMLApp sfml-graphics sfml-window sfml-system)
