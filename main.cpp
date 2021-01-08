@@ -154,7 +154,7 @@ int main()
 
                     //It's not a button of any kind, so it's a random position.
                 std::cout << "color chosen = " << colorChosen << std::endl;
-                if (colorChosen)
+                if (colorChosen && sf::Mouse::isButtonPressed(sf::Mouse::Left))
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         active_object->setFillColor(sf::Color::Cyan); 
