@@ -91,7 +91,7 @@ int main()
                 window.close();
             }
 
-            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true)
+            if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true && active_object != nullptr)
             {
                 auto mPos = sf::Mouse::getPosition(window);
                 active_object->jump(sf::Vector2f(mPos.x,mPos.y));
@@ -124,7 +124,7 @@ int main()
                         else if(circleBox.getGlobalBounds().contains(position.x,position.y)){
                             collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
                             
-                            //Select the newly created object as active.
+                            //Select the newly created object as active. this is kinda buggy right now. should fix.
                             sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                             }
@@ -134,7 +134,7 @@ int main()
                         {
                             collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
 
-                            //Select the newly created object as active.
+                            //Select the newly created object as active. this is kinda buggy right now. should fix.
                             sf::Mouse::setPosition(sf::Vector2i(60,35),window);
                             active_object = collection.getObject(sf::Mouse::getPosition(window));
                         }
@@ -165,6 +165,7 @@ int main()
                                 collection.remove(active_object);
                                 active_object = nullptr;
                             }
+                            std::cout << "DELETE FUNCTION DONE." << std::endl;
                         }
 
                         else{
