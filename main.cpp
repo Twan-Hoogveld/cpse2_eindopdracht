@@ -117,7 +117,7 @@ int main()
                     } 
 
                     //Is the Circle Clicked?
-                    else if(circleBox.getGlobalBounds().contains(position.x,position.y))
+                    if(circleBox.getGlobalBounds().contains(position.x,position.y))
                     {
                         collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
                         
@@ -127,7 +127,7 @@ int main()
                     }
 
                     //Is the Rectangle clicked?
-                    else if(squareBox.getGlobalBounds().contains(position.x,position.y))
+                    if(squareBox.getGlobalBounds().contains(position.x,position.y))
                     {
                         collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
 
@@ -137,7 +137,7 @@ int main()
                     }
 
                     //Is the move tool selected?
-                    else if(sprite.getGlobalBounds().contains(position.x,position.y))
+                    if(sprite.getGlobalBounds().contains(position.x,position.y))
                     {
                         std::cout << "move tool is selected" << std::endl;
                         deleteChosen = false;
@@ -145,14 +145,14 @@ int main()
                     }
 
                     //Is the delete tool selected?
-                    else if(sprite2.getGlobalBounds().contains(position.x,position.y))
+                    if(sprite2.getGlobalBounds().contains(position.x,position.y))
                     {
                         std::cout << "delete tool is selected" << std::endl;
                         moveChosen = false;
                         deleteChosen = true;
                     }
 
-                    else if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
+                    if(deleteChosen == true) //It's not the circle, it's not the rectangle and not the colors, so it's a random positon. 
                     {
                         std::cout << "DELETING ";
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
