@@ -26,7 +26,7 @@ class CollectionMoveables {
 	}
 
 	void showStack(){
-		storage.fillGaps();
+		storage.showStack();
 	}
 
 	shared_ptr<MoveableObject> getObject(const Vector2i& mouse_pos){

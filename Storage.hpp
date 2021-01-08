@@ -14,7 +14,8 @@ class Storage {
     bool added = false;
     if (to_add != nullptr)
     {
-      if (count >= 1){ //If there is at least 1 element.
+      if (count >= 1)
+      { //If there is at least 1 element.
         for(unsigned int i = 0; i < count; i++){
           if (store[i] == nullptr) //if we find a nullptr
           { 
@@ -28,16 +29,27 @@ class Storage {
         store[count] = to_add;
         ++count;
       }
+      else{
+        fillGaps(to_add);
+      }
     }
   }
 
-  void fillGaps(){
+  void fillGaps(const T &to_add){
     std::cout << "=========FILL GAPS==============SHOULD PRINT ALL ALIVE OBJECTS" << std::endl;
-    for (const auto x : store)
+    for (unsigned int i = 0; i < count; i++)
     {
-      if ( x != nullptr ) { std::cout << x << std::endl;}
+      if ( store[i] == nullptr ) { store[i] = to_add; }
     }
     std::cout << "=========FILL GAPS END ==============" << std::endl;
+  }
+
+  void showStack(){
+    for (const auto x : store) 
+    {
+      std::cout << x << std::endl;
+    }
+    std::cout << "======= this was the stack =========" << std::endl;
   }
 
   void remove(const T &to_remove)
@@ -52,7 +64,6 @@ class Storage {
         }
       }
     }
-    fillGaps();
   }
 
   T *begin() { return store; }
