@@ -223,7 +223,7 @@ int main()
                         active_object->setFillColor(currentColor); 
                     }
                 
-                else if (colorChosen && outlineChosen)
+                else if (outlineChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         active_object->setOutlineColor(currentColor); 
