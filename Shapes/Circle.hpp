@@ -53,6 +53,7 @@ class Circle : public MoveableObject {
   }
 
   void setOutlineColor(const sf::Color col) override{
+    std::cout << "setting the outline color" << std::endl;
     circle.setOutlineColor(col);
   }
 
