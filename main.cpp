@@ -115,7 +115,7 @@ int main()
                     } 
 
                 //Is the Circle Clicked?
-                else if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
                         
@@ -125,7 +125,7 @@ int main()
                     }
 
                 //Is the Rectangle clicked?
-                else if(squareBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                if (squareBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
 
@@ -135,7 +135,7 @@ int main()
                     }
 
                 //Is the move tool selected?
-                else if(sprite.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                if(sprite.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         deleteChosen = false;
                         moveChosen = true;
@@ -143,14 +143,14 @@ int main()
                     }
 
                 //Is the delete tool selected?
-                else if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         moveChosen = false;
                         deleteChosen = true;
                         colorChosen = false;
                     }
 
-                else if(deleteChosen == true) 
+                if(deleteChosen == true) 
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         if (active_object != nullptr)
