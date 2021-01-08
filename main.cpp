@@ -201,6 +201,8 @@ int main()
         //Draw all the sprites 
         window.draw(sprite);
         window.draw(sprite2);
+        window.draw(sprite3);
+        window.draw(sprite4);
 
         //Display it all.
         window.display();
