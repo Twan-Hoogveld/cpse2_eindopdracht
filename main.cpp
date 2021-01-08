@@ -112,7 +112,7 @@ int main()
                         {
                             std::cout << "do we even reach this? 3 ";
                             auto globalBounds = x.getGlobalBounds();
-                            if(globalBounds.contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
+                            if(globalBounds.contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                             {
                                 squareBox.setFillColor(x.getFillColor());
                                 circleBox.setFillColor(x.getFillColor());
@@ -126,7 +126,7 @@ int main()
 
                     std::cout << "do we even reach this? 6 ";
                     //Is the Circle Clicked?
-                    if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
+                    if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
                         
@@ -136,7 +136,7 @@ int main()
                     }
 
                     //Is the Rectangle clicked?
-                    if(squareBox.getGlobalBounds().contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
+                    if(squareBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
 
@@ -146,7 +146,7 @@ int main()
                     }
 
                     //Is the move tool selected?
-                    if(sprite.getGlobalBounds().contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
+                    if(sprite.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         std::cout << "move tool is selected" << std::endl;
                         deleteChosen = false;
@@ -154,7 +154,7 @@ int main()
                     }
 
                     //Is the delete tool selected?
-                    if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y))
+                    if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         std::cout << "delete tool is selected" << std::endl;
                         moveChosen = false;
