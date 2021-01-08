@@ -120,7 +120,7 @@ int main()
                 //Is the Rectangle clicked? Make a new rect, the user can now, if in move mode, move the object.
                 if (squareBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
-                        collection.add(make_shared<Rectangle>(sf::Vector2f(30,0),sf::Vector2f(50,20),currentColor));
+                        collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(70,20),currentColor));
                     }
 
                 //Is the move tool selected? Then the other tools will be not selected.
