@@ -13,15 +13,15 @@ int main()
     sf::RenderWindow window(sf::VideoMode(400, 400), "BloxBox");
     CollectionMoveables<10> collection = {}; //Items go here when the are created dynamically.
     shared_ptr<MoveableObject> active_object; //last selected object.
-    auto defaultColor = sf::Color::Red; //Red would be the standard color of the selectors.
+    sf::Color currentColor = sf::Color::Red; //Red would be the standard color of the selectors.
 
     //--------------------SHAPE SELECTOR-------------------------------------------------------
     sf::RectangleShape squareBox(sf::Vector2f{20,20});
     squareBox.setPosition(25,0);
-    squareBox.setFillColor(defaultColor);
+    squareBox.setFillColor(currentColor);
     sf::CircleShape circleBox(10);
     circleBox.setPosition(25,25);
-    circleBox.setFillColor(defaultColor);
+    circleBox.setFillColor(currentColor);
     //---------------------COLOR SELECTORS-----------------------------------------------------
     sf::RectangleShape redBox(sf::Vector2f(20,20));
     redBox.setFillColor(sf::Color::Red);
@@ -68,18 +68,12 @@ int main()
     sf::Sprite sprite2(texture2);
     sprite2.setPosition(25,175);
     sprite2.scale(sf::Vector2f(0.1,0.1));
-
-    // ----------------------------------ACTIONS-----------------------------------------------
-	// Action actions[] = {Action(Keyboard::Left, [&]() { active_object->move(Vector2f(-2.0, 0.0)); std::cout << "Move Left \n"; }),
-    //                   Action(Keyboard::Right, [&]() { active_object->move(Vector2f(+2.0, 0.0)); std::cout << "Move Right \n";}),
-    //                   Action(Keyboard::Up, [&]() { active_object->move(Vector2f(0.0, -2.0)); std::cout << "Move Up \n"; }),
-    //                   Action(Keyboard::Down, [&]() { active_object->move(Vector2f(0.0, +2.0)); std::cout << "Move Down \n"; })};
-
-    // //-----------------------------------------------------------------------------------------
+    //=========================================================================================
     bool moveChosen = false;
     bool deleteChosen = false;
     bool colorChosen = false;
-    
+    //==========================================================================================
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -91,6 +85,7 @@ int main()
                 window.close();
             }
 
+            //Move the last selected Object
             if (event.type == sf::Event::MouseMoved && sf::Mouse::isButtonPressed(sf::Mouse::Left) && moveChosen == true && active_object != nullptr)
             {
                 auto mPos = sf::Mouse::getPosition(window);
@@ -106,51 +101,47 @@ int main()
                             auto globalBounds = x.getGlobalBounds();
                             if(globalBounds.contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                             {
-                                squareBox.setFillColor(x.getFillColor());
-                                circleBox.setFillColor(x.getFillColor());
+                                currentColor = x.getFillColor();
+                                squareBox.setFillColor(currentColor);
+                                circleBox.setFillColor(currentColor);
                                 colorChosen = true;
-                                moveChosen = true;
+                                break;
                             }
                         }
                     } 
 
-                //Is the Circle Clicked?
+                //Is the Circle Clicked? Make a new circle, the user can now, if in move mode, move the object.
                 if(circleBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
-                        collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,circleBox.getFillColor()));
-                        
-                        //Select the newly created object as active. this is kinda buggy right now. should fix.
-                        sf::Mouse::setPosition(sf::Vector2i(60,35),window);
-                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        collection.add(make_shared<Circle>(sf::Vector2f(50,25),20,currentColor));
+
                     }
 
-                //Is the Rectangle clicked?
+                //Is the Rectangle clicked? Make a new rect, the user can now, if in move mode, move the object.
                 if (squareBox.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
-                        collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),squareBox.getFillColor())); //TO-DO fix coord.
-
-                        //Select the newly created object as active. this is kinda buggy right now. should fix.
-                        sf::Mouse::setPosition(sf::Vector2i(60,35),window);
-                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        collection.add(make_shared<Rectangle>(sf::Vector2f(50,0),sf::Vector2f(50,50),currentColor)); //TO-DO fix coord.
                     }
 
-                //Is the move tool selected?
+                //Is the move tool selected? Then the other tools will be not selected.
                 if(sprite.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         deleteChosen = false;
-                        moveChosen = true;
                         colorChosen = false;
+                        moveChosen = true;
+
                     }
 
                 //Is the delete tool selected?
                 if(sprite2.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
                     {
                         moveChosen = false;
-                        deleteChosen = true;
                         colorChosen = false;
+                        deleteChosen = true;
+
                     }
 
-                if(deleteChosen == true) 
+                else if(deleteChosen == true) 
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         if (active_object != nullptr)
@@ -164,20 +155,14 @@ int main()
                     }
 
                     //It's not a button of any kind, so it's a random position.
-                else
+                else if (colorChosen)
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
-                        if (colorChosen){active_object.get()->setFillColor(sf::Color::Cyan); colorChosen = false;}
-                        collection.showStack();
+                        active_object.get()->setFillColor(sf::Color::Cyan); 
+                        colorChosen = false;
                     }
             }
         }
-
-            //Do all the actions. not really used right now.
-            // for (auto& Action : actions) 
-            // {
-            //     Action();
-            // }
 
         //Clear the window of the old.
         window.clear();
