@@ -68,6 +68,22 @@ int main()
     sf::Sprite sprite2(texture2);
     sprite2.setPosition(25,175);
     sprite2.scale(sf::Vector2f(0.1,0.1));
+    //============================PLUS=========================================================
+    sf::Image img3;
+    img2.loadFromFile("..//plus.png");
+    sf::Texture texture3;
+    texture3.loadFromImage(img3);
+    sf::Sprite sprite3(texture3);
+    sprite3.setPosition(25,200);
+    sprite3.scale(sf::Vector2f(0.1,0.1));
+    //=============================MINUS=======================================================
+    sf::Image img4;
+    img4.loadFromFile("..//minus.jpg");
+    sf::Texture texture4;
+    texture4.loadFromImage(img4);
+    sf::Sprite sprite4(texture4);
+    sprite4.setPosition(0,200);
+    sprite4.scale(sf::Vector2f(0.1,0.1));
     //=========================================================================================
     bool moveChosen = false;
     bool deleteChosen = false;
