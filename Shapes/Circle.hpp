@@ -48,6 +48,10 @@ class Circle : public MoveableObject {
     return circle.getFillColor();
   }
 
+  void setFillColor(const sf::Color col) override{
+    circle.setFillColor(col);
+  }
+
 };
 
 #endif  // CIRCLE_HPP

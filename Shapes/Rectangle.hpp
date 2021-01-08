@@ -43,6 +43,10 @@ class Rectangle : public MoveableObject {
     rect.setPosition(pos);
 	  window.draw(rect);
   };
+
+  void setFillColor(const sf::Color col) override{
+    rect.setFillColor(col);
+  }
 };
 
 #endif  // RECTANGLE_HPP

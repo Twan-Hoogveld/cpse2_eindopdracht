@@ -19,7 +19,6 @@ class Storage {
         ++count;
       }
       else{
-        std::cout << " can't find empty spot, so we check for nullptr and replace that." << std::endl;
         fillGaps(to_add);
       }
     }
@@ -27,17 +26,14 @@ class Storage {
 
   void fillGaps(const T &to_add){
     bool added = false;
-    std::cout << "=========FILL GAPS==============SHOULD PRINT ALL ALIVE OBJECTS" << std::endl;
     for (unsigned int i = 0; i < count; i++)
     {
       if ( store[i] == nullptr ) 
       { 
         store[i] = to_add; 
-        std::cout << "ADDEDEDEDEDEDEDEDEDD \n\n\n\n\n\n\n " << std::endl; 
         break;
       }
     }
-    std::cout << "=========FILL GAPS END ==============" << std::endl;
   }
 
   void showStack(){
