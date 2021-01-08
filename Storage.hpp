@@ -58,6 +58,30 @@ class Storage {
     }
   }
 
+  void moveToBackground(const T &to_swap)
+  {
+    //to swap moet vooraan in de lijst komen te staan. dus eerst de index ervan zoeken.
+    int index = -1;
+    for(unsigned int i = 0; i < count; i++){ if ( store[i] == to_swap) { index = i; break; }} //check using mem adress
+
+    //Index is nu bekend. dus nu index swappen met 0;
+    T temp = store[0];
+    store[0] = store[index];
+    store[index] = temp;
+  }
+
+  void moveToForeground(const T &to_swap)
+  {
+    //to swap moet achteraan in de lijst komen te staan. dus eerst de index ervan zoeken.
+    int index = -1;
+    for(unsigned int i = 0; i < count; i++){ if ( store[i] == to_swap) { index = i; break; }} //check using mem adress
+
+    //Index is nu bekend. dus nu index swappen met count;
+    T temp = store[count];
+    store[count] = store[index];
+    store[index] = temp;
+  }
+
   T *begin() { return store; }
   T *end() { return store + count; }
 
