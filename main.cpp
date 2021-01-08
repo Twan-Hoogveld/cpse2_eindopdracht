@@ -75,7 +75,7 @@ int main()
     texture3.loadFromImage(img3);
     sf::Sprite sprite3(texture3);
     sprite3.setPosition(25,200);
-    sprite3.scale(sf::Vector2f(0.1,0.1));
+    sprite3.scale(sf::Vector2f(0.02,0.02));
     //=============================MINUS=======================================================
     sf::Image img4;
     img4.loadFromFile("..//minus.png");
