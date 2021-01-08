@@ -49,6 +49,12 @@ class Rectangle : public MoveableObject {
     rect.setFillColor(col);
   }
 
+  void setOutlineColor(const sf::Color col) override
+  {
+    rect.setOutlineColor(col);
+  }
+
+
   void setScale(const float x, const float y) override
   {
     rect.setScale(x,y);

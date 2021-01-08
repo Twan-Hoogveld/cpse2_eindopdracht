@@ -95,6 +95,7 @@ int main()
     bool colorChosen = false;
     bool plusChosen = false;
     bool minusChosen = false;
+    bool outlineChosen = false;
     //==========================================================================================
 
     while (window.isOpen())
@@ -128,7 +129,6 @@ int main()
                                 squareBox.setFillColor(currentColor);
                                 circleBox.setFillColor(currentColor);
                                 colorChosen = true;
-                                moveChosen = false;
                                 break;
                             }
                         }
@@ -154,6 +154,7 @@ int main()
                         plusChosen = false;
                         minusChosen = false;
                         moveChosen = true;
+                        outlineChosen = false;
                     }
 
                 //Is the delete tool selected?
@@ -163,7 +164,8 @@ int main()
                         colorChosen = false;
                         plusChosen = false;
                         minusChosen = false;
-                        deleteChosen = true;
+                        deleteChosen = true;                        
+                        outlineChosen = false;
                     }
 
                 //Is the plus tool selected?
@@ -174,6 +176,7 @@ int main()
                         deleteChosen = false;
                         plusChosen = true;
                         minusChosen = false;
+                        outlineChosen = false;
                     }
 
                 //Is the minus tool selected?
@@ -184,6 +187,19 @@ int main()
                         deleteChosen = false;
                         minusChosen = true;
                         plusChosen = false;
+                        outlineChosen = false;
+                    }
+
+                //Is the outline toggle tool selected?
+                if(sprite5.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                    {
+                        moveChosen = false;
+                        colorChosen = false;
+                        deleteChosen = false;
+                        minusChosen = false;
+                        plusChosen = false;
+                        outlineChosen = false;
+
                     }
 
                 //Delete the object you clicked on if you are in delete mode.
@@ -205,6 +221,12 @@ int main()
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         active_object->setFillColor(currentColor); 
+                    }
+                
+                else if (colorChosen && outlineChosen)
+                    {
+                        active_object = collection.getObject(sf::Mouse::getPosition(window));
+                        active_object->setOutlineColor(currentColor); 
                     }
 
                 else if (minusChosen)

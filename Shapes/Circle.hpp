@@ -52,6 +52,10 @@ class Circle : public MoveableObject {
     circle.setFillColor(col);
   }
 
+  void setOutlineColor(const sf::Color col) override{
+    circle.setOutlineColor(col);
+  }
+
   void setScale(const float x, const float y) override
   {
     circle.setScale(x,y);
