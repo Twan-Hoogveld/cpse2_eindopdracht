@@ -44,8 +44,14 @@ class Rectangle : public MoveableObject {
 	  window.draw(rect);
   };
 
-  void setFillColor(const sf::Color col) override{
+  void setFillColor(const sf::Color col) override
+  {
     rect.setFillColor(col);
+  }
+
+  void setScale(const float x, const float y) override
+  {
+    rect.setScale(x,y);
   }
 };
 

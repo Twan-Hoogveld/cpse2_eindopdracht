@@ -52,6 +52,11 @@ class Circle : public MoveableObject {
     circle.setFillColor(col);
   }
 
+  void setScale(const float x, const float y) override
+  {
+    circle.setScale(x,y);
+  }
+
 };
 
 #endif  // CIRCLE_HPP

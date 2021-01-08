@@ -90,6 +90,8 @@ int main()
     bool moveChosen = false;
     bool deleteChosen = false;
     bool colorChosen = false;
+    bool plusChosen = false;
+    bool minusChosen = false;
     //==========================================================================================
 
     while (window.isOpen())
@@ -127,14 +129,6 @@ int main()
                                 break;
                             }
                         }
-                        for(auto x: sprites)
-                        {
-                            auto globalBounds = x.getGlobalBounds();
-                            if(globalBounds.contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
-                            {
-                                std::cout << "user clicked on a sprite" << std::endl;
-                            }
-                        }
                     } 
 
                 //Is the Circle Clicked? Make a new circle, the user can now, if in move mode, move the object.
@@ -154,6 +148,8 @@ int main()
                     {
                         deleteChosen = false;
                         colorChosen = false;
+                        plusChosen = false;
+                        minusChosen = false;
                         moveChosen = true;
                     }
 
@@ -162,12 +158,33 @@ int main()
                     {
                         moveChosen = false;
                         colorChosen = false;
+                        plusChosen = false;
+                        minusChosen = false;
                         deleteChosen = true;
+                    }
 
+                //Is the minus tool selected?
+                if(sprite3.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                    {
+                        moveChosen = false;
+                        colorChosen = false;
+                        deleteChosen = false;
+                        plusChosen = false;
+                        minusChosen = true;
+                    }
+
+                //Is the plus tool selected?
+                if(sprite4.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                    {
+                        moveChosen = false;
+                        colorChosen = false;
+                        deleteChosen = false;
+                        minusChosen = false;
+                        plusChosen = true;
                     }
 
                 //Delete the object you clicked on if you are in delete mode.
-                if(deleteChosen == true) 
+                if(deleteChosen) 
                     {
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         if (active_object != nullptr)
@@ -186,10 +203,21 @@ int main()
                         active_object = collection.getObject(sf::Mouse::getPosition(window));
                         active_object->setFillColor(currentColor); 
                     }
-                else
+
+                if (minusChosen)
+                    {
+                    active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    active_object->setScale(0.9,0.9);
+                    }
+                if (plusChosen)
                 {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    active_object->setScale(1.1,1.1);
                 }
+                else
+                    {
+                    active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    }
             }
         }
 

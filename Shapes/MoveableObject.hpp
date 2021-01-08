@@ -23,6 +23,7 @@ class MoveableObject {
   virtual void move(const Vector2f& velo)  = 0;
   virtual void jump(const Vector2f& new_pos) = 0;
   virtual void setFillColor(const sf::Color col) = 0;
+  virtual void setScale(const float x, const float y) = 0;
   void jump(const Vector2i& new_pos);
 };
 
