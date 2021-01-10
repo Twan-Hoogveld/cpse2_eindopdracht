@@ -72,14 +72,14 @@ class Storage {
     }
   }
 
-  void moveToForeground(const T &to_swap)
+  void moveToForeground(const T &to_swap) //TO-DO This is bugged, but i don't exactly know how
   {
     //to swap moet achteraan in de lijst komen te staan. dus eerst de index ervan zoeken.
     int index = -1;
     for(unsigned int i = 0; i < count; i++){ if ( store[i] == to_swap) { index = i; break; }} //check using mem adress
     if (index != -1)
     {
-      //Index is nu bekend. dus nu index swappen met count;
+      //Index is nu bekend. dus nu index swappen met count; count zou het laatste element in de lijst moeten zijn. 
       T temp = store[count];
       store[count] = store[index];
       store[index] = temp;
