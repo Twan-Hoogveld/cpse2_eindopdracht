@@ -232,6 +232,32 @@ int main()
 
                     }
 
+                //Is the fg tool selected?
+                if(fg.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                    {
+                        moveChosen = false;
+                        colorChosen = false;
+                        deleteChosen = false;
+                        minusChosen = false;
+                        plusChosen = false;
+                        outlineChosen = false;
+                        fgChosen = true;
+                        bgChosen = false;
+
+                    }                
+                //Is the bg toggle tool selected?
+                if(bg.getGlobalBounds().contains(sf::Mouse::getPosition(window).x,sf::Mouse::getPosition(window).y))
+                    {
+                        moveChosen = false;
+                        colorChosen = false;
+                        deleteChosen = false;
+                        minusChosen = false;
+                        plusChosen = false;
+                        outlineChosen = false;
+                        fgChosen = false;
+                        bgChosen = true;
+                    }
+
                 //Delete the object you clicked on if you are in delete mode.
                 if(deleteChosen) 
                     {
