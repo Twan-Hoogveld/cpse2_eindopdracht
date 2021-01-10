@@ -31,6 +31,7 @@ class CollectionMoveables {
 
 	void moveToBackground(shared_ptr<MoveableObject> to_move)
 	{
+		std::cout << "moving to bg" << std::endl;
 		storage.moveToBackground(to_move);
 	}
 

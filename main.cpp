@@ -301,7 +301,7 @@ int main()
                 else if (bgChosen)
                 {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
-                    //collection.moveToBackground(active_object);
+                    collection.moveToBackground(active_object);
                 }
                 else if(fgChosen)
                 {
