@@ -86,9 +86,27 @@ int main()
     sf::Sprite sprite5(texture5);
     sprite5.setPosition(0,250);
     sprite5.scale(sf::Vector2f(0.1,0.1));
-    //=========================================================================================
+    //============================BACKGROUND FORGROUND TEXT====================================
+    sf::Text fg;
+    fg.setString("Foreground");
+    sf::Font font;
+    font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf");
+    fg.setFont(font);
+    fg.setCharacterSize(18);
+    fg.setFillColor(sf::Color::White);
+    fg.setPosition(0,280);
+
+    sf::Text bg;
+    bg.setString("Background");
+    bg.setFont(font);
+    bg.setCharacterSize(18);
+    bg.setFillColor(sf::Color::White);
+    bg.setPosition(0,300);
+
+    //===================================VECTORS FOR EASY DRAWING AND SELCTING=================
     std::vector<sf::RectangleShape> colors = {redBox,greenBox,blueBox,yellowBox,whiteBox,purpleBox,cyanBox};
     std::vector<sf::Sprite> sprites = {sprite,sprite2,sprite3,sprite4,sprite5};
+    std::vector<sf::Text> tx = {fg,bg};
     //=========================================================================================
     bool moveChosen = false;
     bool deleteChosen = false;
@@ -265,6 +283,11 @@ int main()
 
         //Draw all the sprites
         for(auto x : sprites)
+        {
+            window.draw(x);
+        }
+
+        for (auto x : tx)
         {
             window.draw(x);
         }
