@@ -63,10 +63,8 @@ class Storage {
     //to swap moet vooraan in de lijst komen te staan. dus eerst de index ervan zoeken.
     int index = -1;
     for(unsigned int i = 0; i < count; i++){ if ( store[i] == to_swap) { index = i; break; }} //check using mem adress
-    if (index == -1) { std::cout << "i not found." << std::endl;}
-    else
+    if (index != -1)
     {
-      std::cout << "found i" << std::endl;
       //Index is nu bekend. dus nu index swappen met 0;
       T temp = store[0];
       store[0] = store[index];
@@ -79,11 +77,14 @@ class Storage {
     //to swap moet achteraan in de lijst komen te staan. dus eerst de index ervan zoeken.
     int index = -1;
     for(unsigned int i = 0; i < count; i++){ if ( store[i] == to_swap) { index = i; break; }} //check using mem adress
+    if (index != -1)
+    {
+      //Index is nu bekend. dus nu index swappen met count;
+      T temp = store[count];
+      store[count] = store[index];
+      store[index] = temp;
+    }
 
-    //Index is nu bekend. dus nu index swappen met count;
-    T temp = store[count];
-    store[count] = store[index];
-    store[index] = temp;
   }
 
   T *begin() { return store; }

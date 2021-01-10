@@ -309,7 +309,10 @@ int main()
                 else if(fgChosen)
                 {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
-                    //collection.moveToForeground(active_object);
+                    if (active_object != nullptr)
+                    {
+                        collection.moveToForeground(active_object);
+                    }
                 }
                 else
                     {
