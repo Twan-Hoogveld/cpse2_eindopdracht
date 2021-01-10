@@ -114,6 +114,8 @@ int main()
     bool plusChosen = false;
     bool minusChosen = false;
     bool outlineChosen = false;
+    bool fgChosen = false;
+    bool bgChosen = false;
     //==========================================================================================
 
     while (window.isOpen())
@@ -173,6 +175,8 @@ int main()
                         minusChosen = false;
                         moveChosen = true;
                         outlineChosen = false;
+                        fgChosen = false;
+                        bgChosen = false;
                     }
 
                 //Is the delete tool selected?
@@ -184,6 +188,8 @@ int main()
                         minusChosen = false;
                         deleteChosen = true;                        
                         outlineChosen = false;
+                        fgChosen = false;
+                        bgChosen = false;
                     }
 
                 //Is the plus tool selected?
@@ -195,6 +201,8 @@ int main()
                         plusChosen = true;
                         minusChosen = false;
                         outlineChosen = false;
+                        fgChosen = false;
+                        bgChosen = false;
                     }
 
                 //Is the minus tool selected?
@@ -206,6 +214,8 @@ int main()
                         minusChosen = true;
                         plusChosen = false;
                         outlineChosen = false;
+                        fgChosen = false;
+                        bgChosen = false;
                     }
 
                 //Is the outline toggle tool selected?
@@ -217,6 +227,8 @@ int main()
                         minusChosen = false;
                         plusChosen = false;
                         outlineChosen = true;
+                        fgChosen = false;
+                        bgChosen = false;
 
                     }
 
@@ -257,7 +269,19 @@ int main()
                 {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));
                     auto scale = active_object->getScale();
-                    active_object->setScale(scale.x + 0.1 ,scale.y + 0.1);                }
+                    active_object->setScale(scale.x + 0.1 ,scale.y + 0.1);                
+                }
+
+                else if (bgChosen)
+                {
+                    active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    collection.moveToBackground(active_object);
+                }
+                else if(fgChosen)
+                {
+                    active_object = collection.getObject(sf::Mouse::getPosition(window));
+                    collection.moveToForeground(active_object);
+                }
                 else
                     {
                     active_object = collection.getObject(sf::Mouse::getPosition(window));

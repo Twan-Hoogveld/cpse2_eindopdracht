@@ -29,14 +29,14 @@ class CollectionMoveables {
 		storage.showStack();
 	}
 
-	void moveToBackground()
+	void moveToBackground(shared_ptr<MoveableObject> to_move)
 	{
-		storage.moveToBackground();
+		storage.moveToBackground(to_move);
 	}
 
-	void moveToForeground()
+	void moveToForeground(shared_ptr<MoveableObject> to_move)
 	{
-		storage.moveToForeground();
+		storage.moveToForeground(to_move);
 	}
 
 	shared_ptr<MoveableObject> getObject(const Vector2i& mouse_pos){
